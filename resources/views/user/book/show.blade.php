@@ -10,7 +10,9 @@
                         <div class="tab-content">
                             <div id="thumb1" class="tab-pane fade show active" role="tabpanel">
                                 <div class="shop-details-thumb">
-                                    <img style="width: 315px; height: 402px;" src="{{ asset('storage/' . $book->avatar) ?? 'https://www.contentviewspro.com/wp-content/uploads/2017/07/default_image.png' }}" alt="img">
+                                    <img style="width: 315px; height: 402px;"
+                                        src="{{ asset('storage/' . $book->avatar) ?? 'https://www.contentviewspro.com/wp-content/uploads/2017/07/default_image.png' }}"
+                                        alt="img">
                                 </div>
                             </div>
                             @foreach ($images as $index => $image)
@@ -20,19 +22,21 @@
                                     </div>
                                 </div>
                             @endforeach
-                            
+
                         </div>
                         <ul class="nav" role="tablist">
                             <li class="nav-item" role="presentation">
                                 <a href="#thumb1" data-bs-toggle="tab" class="nav-link" aria-selected="false" role="tab"
                                     tabindex="-1">
-                                    <img style="width: 74px; height: 102px;" src="{{ asset('storage/' . $book->avatar) ?? 'https://www.contentviewspro.com/wp-content/uploads/2017/07/default_image.png' }}" alt="img">
+                                    <img style="width: 74px; height: 102px;"
+                                        src="{{ asset('storage/' . $book->avatar) ?? 'https://www.contentviewspro.com/wp-content/uploads/2017/07/default_image.png' }}"
+                                        alt="img">
                                 </a>
                             </li>
                             @foreach ($images as $index => $image)
                                 <li class="nav-item" role="presentation">
-                                    <a href="#thumb{{$index + 2}}" data-bs-toggle="tab" class="nav-link" aria-selected="false" role="tab"
-                                        tabindex="-1">
+                                    <a href="#thumb{{$index + 2}}" data-bs-toggle="tab" class="nav-link"
+                                        aria-selected="false" role="tab" tabindex="-1">
                                         <img style="width: 74px; height: 102px;" src="{{ $image }}" alt="img">
                                     </a>
                                 </li>
@@ -64,7 +68,8 @@
                             <div class="quantity-basket">
                                 <p class="qty">
                                     <button class="qtyminus" aria-hidden="true">−</button>
-                                    <input type="number" name="qty" id="qty2" min="1" max="{{ $book->quantity }}" step="1" value="1">
+                                    <input type="number" name="qty" id="qty2" min="1" max="{{ $book->quantity }}"
+                                        step="1" value="1">
                                     <input type="hidden" name="bookId" value="{{ $book->id }}">
                                     <button class="qtyplus" aria-hidden="true">+</button>
                                 </p>
@@ -116,7 +121,7 @@
                                         <span>Thẻ:</span> {{ $book->tags }}
                                     </li>
                                     <li>
-                                        <span>Định Dạng:</span>  {{ $book->format }}
+                                        <span>Định Dạng:</span> {{ $book->format }}
                                     </li>
                                 </ul>
                                 <ul>
@@ -176,84 +181,71 @@
                 <div class="tab-content">
                     <div id="review" class="tab-pane fade show active" role="tabpanel">
                         <div class="review-items">
-                            <div class="review-wrap-area d-flex gap-4">
-                                <div class="review-thumb">
-                                    <img src="assets/img/shop-details/review.png" alt="img">
-                                </div>
-                                <div class="review-content">
-                                    <div
-                                        class="head-area d-flex flex-wrap gap-2 align-items-center justify-content-between">
-                                        <div class="cont">
-                                            <h5><a href="news-details.html">Leslie Alexander</a></h5>
-                                            <span>February 10, 2024 at 2:37 pm</span>
+                            @foreach ($comments as $comment)
+                                <div class="review-wrap-area d-flex gap-4 mb-5">
+                                    <div class="review-content">
+                                        <div
+                                            class="head-area d-flex flex-wrap gap-2 align-items-center justify-content-between">
+                                            <div class="cont">
+                                                <h5><a href="#">{{ $comment->user->name }}</a></h5>
+                                                <span>{{ $comment->created_at->format('F j, Y \a\t h:i A') }}</span>
+                                            </div>
+                                            <div class="star">
+                                                @for ($i = 1; $i <= 5; $i++)
+                                                    <i
+                                                        class="{{ $i <= $comment->star ? 'fa-solid fa-star' : 'fa-regular fa-star' }}"></i>
+                                                @endfor
+                                            </div>
                                         </div>
-                                        <div class="star">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-regular fa-star"></i>
-                                        </div>
-                                    </div>
-                                    <p class="mt-30 mb-4">
-                                        Neque porro est qui dolorem ipsum quia quaed inventor veritatis et quasi
-                                        architecto var sed efficitur turpis gilla sed sit amet finibus eros. Lorem
-                                        Ipsum is <br> simply dummy
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="review-title mt-5 py-15 mb-30">
-                                <h4>Your Rating*</h4>
-                                <div class="rate-now d-flex align-items-center">
-                                    <p>Your Rating*</p>
-                                    <div class="star">
-                                        <i class="fa-light fa-star"></i>
-                                        <i class="fa-light fa-star"></i>
-                                        <i class="fa-light fa-star"></i>
-                                        <i class="fa-light fa-star"></i>
-                                        <i class="fa-light fa-star"></i>
+                                        <p class="mt-30 mb-4">
+                                            {{ $comment->content }}
+                                        </p>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="review-form">
-                                <form action="#" id="contact-form" method="POST">
-                                    <div class="row g-4">
-                                        <div class="col-lg-6">
-                                            <div class="form-clt">
-                                                <span>Your Name*</span>
-                                                <input type="text" name="name" id="name" placeholder="Your Name">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-clt">
-                                                <span>Your Email*</span>
-                                                <input type="text" name="email" id="email" placeholder="Your Email">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12 wow fadeInUp animated animated" data-wow-delay=".8"
-                                            style="visibility: visible; animation-name: fadeInUp;">
-                                            <div class="form-clt">
-                                                <span>Message*</span>
-                                                <textarea name="message" id="message"
-                                                    placeholder="Write Message"></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12 wow fadeInUp animated animated" data-wow-delay=".9"
-                                            style="visibility: visible; animation-name: fadeInUp;">
-                                            <div class="form-check d-flex gap-2 from-customradio">
-                                                <input type="checkbox" class="form-check-input" name="flexRadioDefault"
-                                                    id="flexRadioDefault12">
-                                                <label class="form-check-label" for="flexRadioDefault12">
-                                                    i accept your terms &amp; conditions
-                                                </label>
-                                            </div>
-                                            <button type="submit" class="theme-btn">
-                                                Submit now
-                                            </button>
+                            @endforeach
+                            @if (auth()->user())
+                                <div class="review-title mt-5 py-15 mb-30">
+                                    <h4>ĐÁNH GIÁ & PHẢN HỒI</h4>
+                                    <div class="rate-now d-flex align-items-center">
+                                        <p>Đánh giá*</p>
+                                        <div class="star" id="star-rating">
+                                            <i class="fa-light fa-star" data-value="1"></i>
+                                            <i class="fa-light fa-star" data-value="2"></i>
+                                            <i class="fa-light fa-star" data-value="3"></i>
+                                            <i class="fa-light fa-star" data-value="4"></i>
+                                            <i class="fa-light fa-star" data-value="5"></i>
                                         </div>
                                     </div>
-                                </form>
-                            </div>
+                                </div>
+
+                                <div class="review-form">
+                                    <form action="{{ route('user.comment.create') }}" id="contact-form" method="POST">
+                                        @csrf
+                                        <input type="hidden" value="{{ $book->id }}" name="bookId">
+                                        <input type="hidden" value="" name="star" id="star-input">
+                                        <div class="row g-4">
+                                            <div class="col-lg-12">
+                                                <div class="form-clt">
+                                                    <span>Họ Tên*</span>
+                                                    <input type="text" value="{{ auth()->user()->name }}" disabled>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 wow fadeInUp animated animated" data-wow-delay=".8">
+                                                <div class="form-clt">
+                                                    <span>Nội Dung*</span>
+                                                    <textarea name="content" id="message"
+                                                        placeholder="Nhập nội dung đánh giá"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 wow fadeInUp animated animated" data-wow-delay=".9">
+                                                <button type="submit" class="theme-btn">
+                                                    Đánh Giá
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -275,11 +267,13 @@
             <div class="swiper-wrapper" id="swiper-wrapper-10f19cc27f361a4b6" aria-live="off"
                 style="transform: translate3d(-2292px, 0px, 0px); transition-duration: 0ms;">
                 @foreach ($relatedBooks as $index => $book)
-                    <div class="swiper-slide swiper-slide-duplicate-next" data-swiper-slide-index="{{ $index }}" role="group"
-                    aria-label="{{ $index + 1}} / 5" style="width: 290.2px; margin-right: 30px;">
+                    <div class="swiper-slide swiper-slide-duplicate-next" data-swiper-slide-index="{{ $index }}"
+                        role="group" aria-label="{{ $index + 1}} / 5" style="width: 290.2px; margin-right: 30px;">
                         <div class="shop-box-items style-2">
                             <div class="book-thumb center">
-                                <a href="{{ route('user.book.show', $book->slug) }}"><img src="{{ asset('storage/' . $book->avatar) ?? 'https://www.contentviewspro.com/wp-content/uploads/2017/07/default_image.png' }}" alt="img"></a>
+                                <a href="{{ route('user.book.show', $book->slug) }}"><img
+                                        src="{{ asset('storage/' . $book->avatar) ?? 'https://www.contentviewspro.com/wp-content/uploads/2017/07/default_image.png' }}"
+                                        alt="img"></a>
                                 <ul class="post-box">
                                     <li>
                                         MỚI
@@ -322,7 +316,8 @@
                                 </ul>
                             </div>
                             <div class="shop-button">
-                                <a href="{{ route('user.book.show', $book->slug) }}" class="theme-btn"><i class="fa-solid fa-eye"></i>
+                                <a href="{{ route('user.book.show', $book->slug) }}" class="theme-btn"><i
+                                        class="fa-solid fa-eye"></i>
                                     Xem Chi Tiết</a>
                             </div>
                         </div>
@@ -333,8 +328,34 @@
         </div>
     </div>
 </section>
+<style>
+    i{
+        cursor: pointer;
+    }
+</style>
 @endsection
 @section('script')
-    <!--<< Nice Select Js >>-->
-    <script src="{{ asset(path: 'assets/js/jquery.nice-select.min.js') }}"></script>
+<script>
+    // Lấy tất cả các sao trong phần đánh giá
+    const stars = document.querySelectorAll('#star-rating i');
+    const starInput = document.getElementById('star-input');
+
+    // Khi click vào sao, thay đổi màu và cập nhật giá trị vào input
+    stars.forEach(star => {
+        star.addEventListener('click', function () {
+            const value = this.getAttribute('data-value');
+            
+            // Cập nhật giá trị vào input hidden
+            starInput.value = value;
+
+            // Thay đổi màu sao
+            stars.forEach(star => star.classList.replace('fa-solid', 'fa-light')); // Reset tất cả sao
+            for (let i = 0; i < value; i++) {
+                stars[i].classList.replace('fa-light', 'fa-solid'); // Chỉ bật sao đã chọn
+            }
+        });
+    });
+</script>
+<!--<< Nice Select Js >>-->
+<script src="{{ asset(path: 'assets/js/jquery.nice-select.min.js') }}"></script>
 @endsection

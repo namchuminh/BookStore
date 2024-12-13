@@ -91,7 +91,7 @@ use App\Http\Controllers\User\UserCustomerController;
 use App\Http\Controllers\User\UserOrderController;
 use App\Http\Controllers\User\UserCheckoutController;
 use App\Http\Controllers\User\UserCategoryController;
-
+use App\Http\Controllers\User\UserCommentController;
 
 Route::get('/', [UserHomeController::class, 'index'])->name('user.home.index');
 Route::get('/sach', [UserBookController::class, 'index'])->name('user.book.index');
@@ -125,6 +125,8 @@ Route::post('/thanh-toan', [UserCheckoutController::class, 'create'])->name('use
 
 
 Route::get('/don-hang/{id}', [UserOrderController::class, 'show'])->name('user.order.show');
+
+Route::post('/binh-luan', [UserCommentController::class, 'create'])->name('user.comment.create');
 
 
 

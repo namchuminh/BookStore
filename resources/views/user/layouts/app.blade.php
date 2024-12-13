@@ -709,6 +709,22 @@
         });
     </script>
 @endif
+@if ($errors->any())
+    <script>
+        $(document).ready(function () {
+            // Lặp qua tất cả các lỗi
+            @foreach ($errors->all() as $error)
+                Toastify({
+                    text: "{{ $error }}",
+                    duration: 5000, // thời gian hiển thị (ms)
+                    close: true, // nút đóng
+                    gravity: "bottom", // vị trí: "top" hoặc "bottom"
+                    position: "center", // "left", "center", "right"
+                }).showToast();
+            @endforeach
+        });
+    </script>
+@endif
 @if (session('error'))
     <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script>
