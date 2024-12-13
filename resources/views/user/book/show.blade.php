@@ -334,3 +334,7 @@
     </div>
 </section>
 @endsection
+@section('script')
+    <!--<< Nice Select Js >>-->
+    <script src="{{ asset(path: 'assets/js/jquery.nice-select.min.js') }}"></script>
+@endsection

@@ -183,7 +183,7 @@
         <div class="book-catagories-wrapper">
             <div class="section-title text-center">
                 <h2 class="wow fadeInUp" data-wow-delay=".3s"
-                    style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">Top Categories Book
+                    style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">Top Thể Loại
                 </h2>
             </div>
             <div class="array-button">
@@ -195,205 +195,23 @@
             <div class="swiper book-catagories-slider swiper-initialized swiper-horizontal swiper-pointer-events">
                 <div class="swiper-wrapper" id="swiper-wrapper-f3b178f5afdc1c7e" aria-live="polite"
                     style="transform: translate3d(-1541px, 0px, 0px); transition-duration: 0ms;">
-                    <div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active"
-                        data-swiper-slide-index="0" role="group" aria-label="1 / 5"
-                        style="width: 278.2px; margin-right: 30px;">
-                        <div class="book-catagories-items">
-                            <div class="book-thumb">
-                                <img src="assets/img/book-categori/01.png" alt="img">
-                                <div class="circle-shape">
-                                    <img src="assets/img/book-categori/circle-shape.png" alt="shape-img">
+
+                    @foreach($popularCategories as $index => $category)
+                        <div class="swiper-slide @if($index == 0) swiper-slide-active @elseif($index == 1) swiper-slide-next @endif" data-swiper-slide-index="{{ $index }}" role="group" aria-label="{{ $index + 1 }} / 5" style="width: 278.2px; margin-right: 30px;">
+                            <div class="book-catagories-items">
+                                <div class="book-thumb">
+                                    <img style="width: 104px; height: 145px;" src="{{ asset('storage/' . $category->image) ?? 'https://www.contentviewspro.com/wp-content/uploads/2017/07/default_image.png' }}" alt="img">
+                                    <div class="circle-shape">
+                                        <img src="assets/img/book-categori/circle-shape.png" alt="shape-img">
+                                    </div>
                                 </div>
+                                <div class="number">{{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}</div>
+                                <h3><a href="{{ route('user.category.show', $category->slug) }}">{{ $category->name }}</a></h3>
                             </div>
-                            <div class="number"> 01 </div>
-                            <h3><a href="shop-details.html">Romance Books (80)</a></h3>
                         </div>
-                    </div>
-                    <div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-next"
-                        data-swiper-slide-index="1" role="group" aria-label="2 / 5"
-                        style="width: 278.2px; margin-right: 30px;">
-                        <div class="book-catagories-items">
-                            <div class="book-thumb">
-                                <img src="assets/img/book-categori/02.png" alt="img">
-                                <div class="circle-shape">
-                                    <img src="assets/img/book-categori/circle-shape.png" alt="shape-img">
-                                </div>
-                            </div>
-                            <div class="number"> 02 </div>
-                            <h3><a href="shop-details.html">Design Low Book (6)</a></h3>
-                        </div>
-                    </div>
-                    <div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="2" role="group"
-                        aria-label="3 / 5" style="width: 278.2px; margin-right: 30px;">
-                        <div class="book-catagories-items">
-                            <div class="book-thumb">
-                                <img src="assets/img/book-categori/03.png" alt="img">
-                                <div class="circle-shape">
-                                    <img src="assets/img/book-categori/circle-shape.png" alt="shape-img">
-                                </div>
-                            </div>
-                            <div class="number"> 03 </div>
-                            <h3><a href="shop-details.html">safe Home (5)</a></h3>
-                        </div>
-                    </div>
-                    <div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="3" role="group"
-                        aria-label="4 / 5" style="width: 278.2px; margin-right: 30px;">
-                        <div class="book-catagories-items">
-                            <div class="book-thumb">
-                                <img src="assets/img/book-categori/04.png" alt="img">
-                                <div class="circle-shape">
-                                    <img src="assets/img/book-categori/circle-shape.png" alt="shape-img">
-                                </div>
-                            </div>
-                            <div class="number"> 04 </div>
-                            <h3><a href="shop-details.html">Grow flower (7)</a></h3>
-                        </div>
-                    </div>
-                    <div class="swiper-slide swiper-slide-duplicate swiper-slide-prev" data-swiper-slide-index="4"
-                        role="group" aria-label="5 / 5" style="width: 278.2px; margin-right: 30px;">
-                        <div class="book-catagories-items">
-                            <div class="book-thumb">
-                                <img src="assets/img/book-categori/05.png" alt="img">
-                                <div class="circle-shape">
-                                    <img src="assets/img/book-categori/circle-shape.png" alt="shape-img">
-                                </div>
-                            </div>
-                            <div class="number"> 05 </div>
-                            <h3><a href="shop-details.html">Adventure book (4)</a></h3>
-                        </div>
-                    </div>
-                    <div class="swiper-slide swiper-slide-active" data-swiper-slide-index="0" role="group"
-                        aria-label="1 / 5" style="width: 278.2px; margin-right: 30px;">
-                        <div class="book-catagories-items">
-                            <div class="book-thumb">
-                                <img src="assets/img/book-categori/01.png" alt="img">
-                                <div class="circle-shape">
-                                    <img src="assets/img/book-categori/circle-shape.png" alt="shape-img">
-                                </div>
-                            </div>
-                            <div class="number"> 01 </div>
-                            <h3><a href="shop-details.html">Romance Books (80)</a></h3>
-                        </div>
-                    </div>
-                    <div class="swiper-slide swiper-slide-next" data-swiper-slide-index="1" role="group"
-                        aria-label="2 / 5" style="width: 278.2px; margin-right: 30px;">
-                        <div class="book-catagories-items">
-                            <div class="book-thumb">
-                                <img src="assets/img/book-categori/02.png" alt="img">
-                                <div class="circle-shape">
-                                    <img src="assets/img/book-categori/circle-shape.png" alt="shape-img">
-                                </div>
-                            </div>
-                            <div class="number"> 02 </div>
-                            <h3><a href="shop-details.html">Design Low Book (6)</a></h3>
-                        </div>
-                    </div>
-                    <div class="swiper-slide" data-swiper-slide-index="2" role="group" aria-label="3 / 5"
-                        style="width: 278.2px; margin-right: 30px;">
-                        <div class="book-catagories-items">
-                            <div class="book-thumb">
-                                <img src="assets/img/book-categori/03.png" alt="img">
-                                <div class="circle-shape">
-                                    <img src="assets/img/book-categori/circle-shape.png" alt="shape-img">
-                                </div>
-                            </div>
-                            <div class="number"> 03 </div>
-                            <h3><a href="shop-details.html">safe Home (5)</a></h3>
-                        </div>
-                    </div>
-                    <div class="swiper-slide" data-swiper-slide-index="3" role="group" aria-label="4 / 5"
-                        style="width: 278.2px; margin-right: 30px;">
-                        <div class="book-catagories-items">
-                            <div class="book-thumb">
-                                <img src="assets/img/book-categori/04.png" alt="img">
-                                <div class="circle-shape">
-                                    <img src="assets/img/book-categori/circle-shape.png" alt="shape-img">
-                                </div>
-                            </div>
-                            <div class="number"> 04 </div>
-                            <h3><a href="shop-details.html">Grow flower (7)</a></h3>
-                        </div>
-                    </div>
-                    <div class="swiper-slide swiper-slide-duplicate-prev" data-swiper-slide-index="4" role="group"
-                        aria-label="5 / 5" style="width: 278.2px; margin-right: 30px;">
-                        <div class="book-catagories-items">
-                            <div class="book-thumb">
-                                <img src="assets/img/book-categori/05.png" alt="img">
-                                <div class="circle-shape">
-                                    <img src="assets/img/book-categori/circle-shape.png" alt="shape-img">
-                                </div>
-                            </div>
-                            <div class="number"> 05 </div>
-                            <h3><a href="shop-details.html">Adventure book (4)</a></h3>
-                        </div>
-                    </div>
-                    <div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active"
-                        data-swiper-slide-index="0" role="group" aria-label="1 / 5"
-                        style="width: 278.2px; margin-right: 30px;">
-                        <div class="book-catagories-items">
-                            <div class="book-thumb">
-                                <img src="assets/img/book-categori/01.png" alt="img">
-                                <div class="circle-shape">
-                                    <img src="assets/img/book-categori/circle-shape.png" alt="shape-img">
-                                </div>
-                            </div>
-                            <div class="number"> 01 </div>
-                            <h3><a href="shop-details.html">Romance Books (80)</a></h3>
-                        </div>
-                    </div>
-                    <div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-next"
-                        data-swiper-slide-index="1" role="group" aria-label="2 / 5"
-                        style="width: 278.2px; margin-right: 30px;">
-                        <div class="book-catagories-items">
-                            <div class="book-thumb">
-                                <img src="assets/img/book-categori/02.png" alt="img">
-                                <div class="circle-shape">
-                                    <img src="assets/img/book-categori/circle-shape.png" alt="shape-img">
-                                </div>
-                            </div>
-                            <div class="number"> 02 </div>
-                            <h3><a href="shop-details.html">Design Low Book (6)</a></h3>
-                        </div>
-                    </div>
-                    <div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="2" role="group"
-                        aria-label="3 / 5" style="width: 278.2px; margin-right: 30px;">
-                        <div class="book-catagories-items">
-                            <div class="book-thumb">
-                                <img src="assets/img/book-categori/03.png" alt="img">
-                                <div class="circle-shape">
-                                    <img src="assets/img/book-categori/circle-shape.png" alt="shape-img">
-                                </div>
-                            </div>
-                            <div class="number"> 03 </div>
-                            <h3><a href="shop-details.html">safe Home (5)</a></h3>
-                        </div>
-                    </div>
-                    <div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="3" role="group"
-                        aria-label="4 / 5" style="width: 278.2px; margin-right: 30px;">
-                        <div class="book-catagories-items">
-                            <div class="book-thumb">
-                                <img src="assets/img/book-categori/04.png" alt="img">
-                                <div class="circle-shape">
-                                    <img src="assets/img/book-categori/circle-shape.png" alt="shape-img">
-                                </div>
-                            </div>
-                            <div class="number"> 04 </div>
-                            <h3><a href="shop-details.html">Grow flower (7)</a></h3>
-                        </div>
-                    </div>
-                    <div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="4" role="group"
-                        aria-label="5 / 5" style="width: 278.2px; margin-right: 30px;">
-                        <div class="book-catagories-items">
-                            <div class="book-thumb">
-                                <img src="assets/img/book-categori/05.png" alt="img">
-                                <div class="circle-shape">
-                                    <img src="assets/img/book-categori/circle-shape.png" alt="shape-img">
-                                </div>
-                            </div>
-                            <div class="number"> 05 </div>
-                            <h3><a href="shop-details.html">Adventure book (4)</a></h3>
-                        </div>
-                    </div>
+                    @endforeach
+
+                    
                 </div>
                 <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
             </div>
@@ -544,4 +362,8 @@
     </div>
 </section>
 
+@endsection
+@section('script')
+    <!--<< Nice Select Js >>-->
+    <script src="{{ asset(path: 'assets/js/jquery.nice-select.min.js') }}"></script>
 @endsection

@@ -62,6 +62,10 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        @if ($total <= 0)
+                            <p class="text-center mt-5 mb-5">Không có sản phẩm nào trong giỏ hàng!</p>
+                            <a href="{{ route('user.book.index') }}" class="btn btn-dark"><i class="fa-solid fa-cart-plus"></i> Thêm Sản Phẩm</a>
+                        @endif
                     </div>
                 </div>
                 <div class="col-xl-3">
@@ -111,7 +115,9 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <a href="checkout.html" class="theme-btn">Tiền Hành Thanh Toán</a>
+                        @if ($total > 1)
+                            <a href="{{ route('user.checkout.index') }}" class="theme-btn">Tiến Hành Đặt Hàng</a>
+                        @endif
                     </div>
                 </div>
             </div>

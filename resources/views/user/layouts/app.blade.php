@@ -31,8 +31,6 @@
     <link rel="stylesheet" href="{{ asset('assets/css/meanmenu.css') }}">
     <!--<< Swiper Bundle.css >>-->
     <link rel="stylesheet" href="{{ asset('assets/css/swiper-bundle.min.css') }}">
-    <!--<< Nice Select.css >>-->
-    <link rel="stylesheet" href="{{ asset('assets/css/nice-select.css') }}">
     <!--<< Icomoon.css >>-->
     <link rel="stylesheet" href="{{ asset('assets/css/icomoon.css') }}">
     <!--<< Main.css >>-->
@@ -633,8 +631,6 @@
     <script src="{{ asset('assets/js/viewport.jquery.js') }}"></script>
     <!--<< Bootstrap Js >>-->
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
-    <!--<< Nice Select Js >>-->
-    <script src="{{ asset('assets/js/jquery.nice-select.min.js') }}"></script>
     <!--<< Waypoints Js >>-->
     <script src="{{ asset('assets/js/jquery.waypoints.js') }}"></script>
     <!--<< Counterup Js >>-->
