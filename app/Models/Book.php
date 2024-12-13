@@ -23,11 +23,18 @@ class Book extends Model
         'category_id',
         'format',
         'language',
-        'century'
+        'century',
+        'slug',
+        'author'
     ];
 
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function detailOrders()
+    {
+        return $this->hasMany(DetailOrder::class, 'book_id');
     }
 }

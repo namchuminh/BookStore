@@ -52,6 +52,8 @@ class AdminBookController extends Controller
             'format' => 'nullable|string|max:255',
             'language' => 'nullable|string|max:255',
             'century' => 'nullable|string|max:255',
+            'slug' => 'required|string|max:500|unique:categories,slug',
+            'author' => 'required|string',
         ], [
             'name.required' => 'Tên sách là bắt buộc.',
             'avatar.image' => 'Ảnh đại diện phải là hình ảnh.',
@@ -60,6 +62,12 @@ class AdminBookController extends Controller
             'price.numeric' => 'Giá sách phải là số.',
             'sku.required' => 'Mã sách (SKU) là bắt buộc.',
             'category_id.exists' => 'Danh mục sách không tồn tại.',
+            'slug.required' => 'Đường dẫn là bắt buộc.',
+            'slug.string' => 'Đường dẫn phải là chuỗi ký tự.',
+            'slug.max' => 'Đường dẫn không được vượt quá 500 ký tự.',
+            'slug.unique' => 'Đường dẫn đã tồn tại. Vui lòng chọn đường dẫn khác.',
+            'author.required' => 'Tác giả là bắt buộc.',
+            'author.string' => 'Tác giả phải là chuỗi ký tự.',
         ]);
 
         // Xử lý upload ảnh đại diện
@@ -94,6 +102,8 @@ class AdminBookController extends Controller
             'format' => $request->input('format'),
             'language' => $request->input('language'),
             'century' => $request->input('century'),
+            'slug' => $request->input('slug'),
+            'author' => $request->input('author'),
         ]);
 
         return redirect()->route('admin.book.index')->with('success', 'Sách đã được thêm thành công.');
@@ -136,6 +146,8 @@ class AdminBookController extends Controller
             'format' => 'nullable|string|max:255',
             'language' => 'nullable|string|max:255',
             'century' => 'nullable|string|max:255',
+            'slug' => 'required|string|max:500|unique:books,slug,' . $id,
+            'author' => 'required|string'
         ], [
             'name.required' => 'Tên sách là bắt buộc.',
             'avatar.image' => 'Ảnh đại diện phải là hình ảnh.',
@@ -144,6 +156,12 @@ class AdminBookController extends Controller
             'price.numeric' => 'Giá sách phải là số.',
             'sku.required' => 'Mã sách (SKU) là bắt buộc.',
             'category_id.exists' => 'Danh mục sách không tồn tại.',
+            'slug.required' => 'Đường dẫn là bắt buộc.',
+            'slug.string' => 'Đường dẫn phải là chuỗi ký tự.',
+            'slug.max' => 'Đường dẫn không được vượt quá 500 ký tự.',
+            'slug.unique' => 'Đường dẫn đã tồn tại, vui lòng chọn đường dẫn khác.',
+            'author.required' => 'Tác giả là bắt buộc.',
+            'author.string' => 'Tác giả phải là chuỗi ký tự.',
         ]);
 
         // Cập nhật sách
@@ -184,6 +202,8 @@ class AdminBookController extends Controller
             'format' => $request->input('format'),
             'language' => $request->input('language'),
             'century' => $request->input('century'),
+            'slug' => $request->input('slug'),
+            'author' => $request->input('author'),
         ]);
 
         return redirect()->route('admin.book.index')->with('success', 'Sách đã được cập nhật thành công.');

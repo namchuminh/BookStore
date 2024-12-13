@@ -34,6 +34,12 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
+                            <label for="author">Tác Giả</label>
+                            <input type="text" class="form-control" id="author" name="author" placeholder="Tên Tác Giả" value="{{ old('author') }}">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
                             <label for="slug">Đường dẫn</label>
                             <input type="text" class="form-control" id="slug" name="slug" placeholder="Đường dẫn" value="{{ old('slug') }}">
                         </div>

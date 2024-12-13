@@ -78,3 +78,39 @@ Route::prefix('admin')->group(function () {
         Route::post('/profile/change-password', [AdminProfileController::class, 'changePassword'])->name('admin.profile.changePassword')->middleware('admin');
     });
 });
+
+
+
+use App\Http\Controllers\User\UserHomeController;
+use App\Http\Controllers\User\UserBookController;
+use App\Http\Controllers\User\UserCartController;
+use App\Http\Controllers\User\UserLoginController;
+use App\Http\Controllers\User\UserLogoutController;
+use App\Http\Controllers\User\UserRegisterController;
+use App\Http\Controllers\User\UserCustomerController;
+use App\Http\Controllers\User\UserOrderController;
+
+
+Route::get('/', [UserHomeController::class, 'index'])->name('user.home.index');
+Route::get('/sach', [UserBookController::class, 'index'])->name('user.book.index');
+Route::get('/sach/{slug}', [UserBookController::class, 'show'])->name('user.book.show');
+
+Route::get('/gio-hang', [UserCartController::class, 'index'])->name('user.cart.index');
+Route::put('/gio-hang/{id}', [UserBookController::class, 'update'])->name('user.cart.update');
+Route::delete('/gio-hang/{id}', [UserBookController::class, 'destroy'])->name('user.cart.delete');
+
+Route::get('/dat-hang', [UserOrderController::class, 'index'])->name('user.order.index');
+
+Route::get('/khach-hang', [UserCustomerController::class, 'index'])->name('user.customer.index');
+Route::put('/khach-hang', [UserCustomerController::class, 'update'])->name('user.customer.update');
+
+Route::get('/khach-hang/don-hang', [UserCustomerController::class, 'order'])->name('user.customer.order');
+
+Route::get('/dang-nhap', [UserLoginController::class, 'index'])->name('user.login.index');
+Route::post('/dang-nhap', [UserLoginController::class, 'loginSubmit'])->name('user.login.submit');
+
+Route::get('/dang-ky', [UserRegisterController::class, 'index'])->name('user.register.index');
+Route::post('/dang-ky', [UserRegisterController::class, 'registerSubmit'])->name('user.register.submit');
+
+Route::get('/dang-xuat', [UserLogoutController::class, 'index'])->name('user.logout.index');
+
