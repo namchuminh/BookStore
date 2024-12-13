@@ -2,49 +2,42 @@
 @section('title', 'Trang Chủ')
 @section('content')
 <div class="hero-section hero-1 fix">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 col-xl-8 col-lg-6">
-                <div class="hero-items">
-                    <div class="book-shape">
-                        <img src="assets/img/hero/book.png" alt="shape-img">
-                    </div>
-                    <div class="frame-shape1 float-bob-x">
-                        <img src="assets/img/hero/frame.png" alt="shape-img">
-                    </div>
-                    <div class="frame-shape2 float-bob-y">
-                        <img src="assets/img/hero/frame-2.png" alt="shape-img">
-                    </div>
-                    <div class="frame-shape3">
-                        <img src="assets/img/hero/xstar.png" alt="img">
-                    </div>
-                    <div class="frame-shape4 float-bob-x">
-                        <img src="assets/img/hero/frame-shape.png" alt="img">
-                    </div>
-                    <div class="bg-shape1">
-                        <img src="assets/img/hero/bg-shape.png" alt="img">
-                    </div>
-                    <div class="bg-shape2">
-                        <img src="assets/img/hero/bg-shape2.png" alt="shape-img">
-                    </div>
-                    <div class="hero-content">
-                        <h6 class="wow fadeInUp" data-wow-delay=".3s">Up to 30% Off</h6>
-                        <h1 class="wow fadeInUp" data-wow-delay=".5s">Get Your New Book <br> With The Best Price
-                        </h1>
-                        <div class="form-clt wow fadeInUp" data-wow-delay=".9s">
-                            <button type="submit" class="theme-btn">
-                                Shop Now <i class="fa-solid fa-arrow-right-long"></i>
-                            </button>
-                        </div>
-                    </div>
+    <div class="w-100">
+        <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
+            <!-- Indicators -->
+            <div class="carousel-indicators">
+                @foreach ($slides as $index => $slide)
+                    <button type="button" data-bs-target="#imageCarousel" data-bs-slide-to="{{ $index }}"
+                        class="{{ $index == 0 ? 'active' : '' }}" aria-current="{{ $index == 0 ? 'true' : '' }}"
+                        aria-label="Slide {{ $index + 1 }}"></button>
+                @endforeach
+            </div>
 
-                </div>
+            <!-- Carousel Items -->
+            <div class="carousel-inner">
+                @foreach ($slides as $index => $slide)
+                    <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                        
+                        @if ($slide->book)
+                            <a href="{{ route('user.book.show', $slide->book->slug) }}"><img style="height: 668px;" src="{{ asset('storage/' . $slide->image) }}" class="d-block w-100" alt="Slide {{ $index + 1 }}"></a>
+                        @elseif ($slide->category)
+                            <a href="{{ route('user.category.show', $slide->category->slug) }}"><img style="height: 668px;" src="{{ asset('storage/' . $slide->image) }}" class="d-block w-100" alt="Slide {{ $index + 1 }}"></a>
+                        @else
+                            <a href="#"><img style="height: 668px;" src="{{ asset('storage/' . $slide->image) }}" class="d-block w-100" alt="Slide {{ $index + 1 }}"></a>
+                        @endif
+                    </div>
+                @endforeach
             </div>
-            <div class="col-12 col-xl-4 col-lg-6">
-                <div class="girl-image">
-                    <img class=" float-bob-x" src="assets/img/hero/hero-girl.png" alt="img">
-                </div>
-            </div>
+
+            <!-- Controls -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
     </div>
 </div>
@@ -52,54 +45,43 @@
 <section class="book-banner-section fix section-padding">
     <div class="container">
         <div class="row g-4">
-            <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".3s"
-                style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
-                <div class="banner-book-card-items bg-cover"
-                    style="background-image: url('assets/img/banner/book-banner-1.jpg');">
-                    <div class="book-shape">
-                        <img src="assets/img/banner/book-1.png" alt="img">
-                    </div>
-                    <div class="banner-book-content">
-                        <h2>Crime Fiction <br> Books</h2>
-                        <h6>15% Off on Kids' Toys and Gifts!</h6>
-                        <a href="shop-details.html" class="theme-btn white-bg">Shop Now <i
-                                class="fa-solid fa-arrow-right-long"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".5s"
-                style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
-                <div class="banner-book-card-items bg-cover"
-                    style="background-image: url('assets/img/banner/book-banner-2.jpg');">
-                    <div class="book-shape">
-                        <img src="assets/img/banner/book-2.png" alt="img">
-                    </div>
-                    <div class="banner-book-content">
-                        <h2>One Year on <br> a Bike </h2>
-                        <h6>15% Off on Kids' Toys and Gifts!</h6>
-                        <a href="shop-details.html" class="theme-btn white-bg">Shop Now <i
-                                class="fa-solid fa-arrow-right-long"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".7s"
-                style="visibility: visible; animation-delay: 0.7s; animation-name: fadeInUp;">
-                <div class="banner-book-card-items bg-cover"
-                    style="background-image: url('assets/img/banner/book-banner-3.jpg');">
-                    <div class="book-shape">
-                        <img src="assets/img/banner/book-3.png" alt="img">
-                    </div>
-                    <div class="banner-book-content">
-                        <h2>
-                            Grow With <br>
-                            Flower
-                        </h2>
-                        <h6>15% Off on Kids' Toys and Gifts!</h6>
-                        <a href="shop.html" class="theme-btn white-bg">Shop Now <i
-                                class="fa-solid fa-arrow-right-long"></i></a>
-                    </div>
-                </div>
-            </div>
+            @foreach ($banners as $banner)
+                @if ($banner->book)
+                    <a href="{{ route('user.book.show', $banner->book->slug) }}" class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".5s"
+                        style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
+                        <div class="banner-book-card-items bg-cover"
+                            style="height: 329px;">
+                            <div class="book-shape" style="right: unset; width: 100%; height: 329px;">
+                                <img style="height: 329px;" src="{{ asset('storage/' . $banner->image) }}" alt="img">
+                            </div>
+                            <div class="banner-book-content"></div>
+                        </div>
+                    </a>
+                @elseif ($banner->category)
+                    <a href="{{ route('user.category.show', $banner->category->slug) }}" class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".5s"
+                        style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
+                        <div class="banner-book-card-items bg-cover"
+                            style="height: 329px;">
+                            <div class="book-shape" style="right: unset; width: 100%; height: 329px;">
+                                <img style="height: 329px;" src="{{ asset('storage/' . $banner->image) }}" alt="img">
+                            </div>
+                            <div class="banner-book-content"></div>
+                        </div>
+                    </a>
+                @else
+                    <a href="#" class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".5s"
+                        style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
+                        <div class="banner-book-card-items bg-cover"
+                            style="height: 329px;">
+                            <div class="book-shape" style="right: unset; width: 100%; height: 329px;">
+                                <img style="height: 329px;" src="{{ asset('storage/' . $banner->image) }}" alt="img">
+                            </div>
+                            <div class="banner-book-content"></div>
+                        </div>
+                    </a>
+                @endif
+                
+            @endforeach
         </div>
     </div>
 </section>
@@ -119,11 +101,13 @@
             <div class="swiper-wrapper" id="swiper-wrapper-d6c3bdcdddbd96e9" aria-live="off"
                 style="transform: translate3d(-2881.8px, 0px, 0px); transition-duration: 2000ms;">
                 @foreach ($newBooks as $index => $book)
-                    <div class="swiper-slide swiper-slide-duplicate-next" data-swiper-slide-index="{{ $index }}" role="group"
-                    aria-label="{{ $index + 1}} / 5" style="width: 290.2px; margin-right: 30px;">
+                    <div class="swiper-slide swiper-slide-duplicate-next" data-swiper-slide-index="{{ $index }}"
+                        role="group" aria-label="{{ $index + 1}} / 5" style="width: 290.2px; margin-right: 30px;">
                         <div class="shop-box-items style-2">
                             <div class="book-thumb center">
-                                <a href="{{ route('user.book.show', $book->slug) }}"><img src="{{ asset('storage/' . $book->avatar) ?? 'https://www.contentviewspro.com/wp-content/uploads/2017/07/default_image.png' }}" alt="img"></a>
+                                <a href="{{ route('user.book.show', $book->slug) }}"><img
+                                        src="{{ asset('storage/' . $book->avatar) ?? 'https://www.contentviewspro.com/wp-content/uploads/2017/07/default_image.png' }}"
+                                        alt="img"></a>
                                 <ul class="post-box">
                                     <li>
                                         MỚI
@@ -166,7 +150,8 @@
                                 </ul>
                             </div>
                             <div class="shop-button">
-                                <a href="{{ route('user.book.show', $book->slug) }}" class="theme-btn"><i class="fa-solid fa-eye"></i>
+                                <a href="{{ route('user.book.show', $book->slug) }}" class="theme-btn"><i
+                                        class="fa-solid fa-eye"></i>
                                     Xem Chi Tiết</a>
                             </div>
                         </div>
@@ -197,21 +182,26 @@
                     style="transform: translate3d(-1541px, 0px, 0px); transition-duration: 0ms;">
 
                     @foreach($popularCategories as $index => $category)
-                        <div class="swiper-slide @if($index == 0) swiper-slide-active @elseif($index == 1) swiper-slide-next @endif" data-swiper-slide-index="{{ $index }}" role="group" aria-label="{{ $index + 1 }} / 5" style="width: 278.2px; margin-right: 30px;">
+                        <div class="swiper-slide @if($index == 0) swiper-slide-active @elseif($index == 1) swiper-slide-next @endif"
+                            data-swiper-slide-index="{{ $index }}" role="group" aria-label="{{ $index + 1 }} / 5"
+                            style="width: 278.2px; margin-right: 30px;">
                             <div class="book-catagories-items">
                                 <div class="book-thumb">
-                                    <img style="width: 104px; height: 145px;" src="{{ asset('storage/' . $category->image) ?? 'https://www.contentviewspro.com/wp-content/uploads/2017/07/default_image.png' }}" alt="img">
+                                    <img style="width: 104px; height: 145px;"
+                                        src="{{ asset('storage/' . $category->image) ?? 'https://www.contentviewspro.com/wp-content/uploads/2017/07/default_image.png' }}"
+                                        alt="img">
                                     <div class="circle-shape">
                                         <img src="assets/img/book-categori/circle-shape.png" alt="shape-img">
                                     </div>
                                 </div>
                                 <div class="number">{{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}</div>
-                                <h3><a href="{{ route('user.category.show', $category->slug) }}">{{ $category->name }}</a></h3>
+                                <h3><a href="{{ route('user.category.show', $category->slug) }}">{{ $category->name }}</a>
+                                </h3>
                             </div>
                         </div>
                     @endforeach
 
-                    
+
                 </div>
                 <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
             </div>
@@ -235,11 +225,13 @@
             <div class="swiper-wrapper" id="swiper-wrapper-a89671033bb57889f" aria-live="off"
                 style="transform: translate3d(-3202px, 0px, 0px); transition-duration: 2000ms;">
                 @foreach ($bestSellingBooks as $index => $book)
-                    <div class="swiper-slide swiper-slide-duplicate-next" data-swiper-slide-index="{{ $index }}" role="group"
-                    aria-label="{{ $index + 1}} / 5" style="width: 290.2px; margin-right: 30px;">
+                    <div class="swiper-slide swiper-slide-duplicate-next" data-swiper-slide-index="{{ $index }}"
+                        role="group" aria-label="{{ $index + 1}} / 5" style="width: 290.2px; margin-right: 30px;">
                         <div class="shop-box-items style-2">
                             <div class="book-thumb center">
-                                <a href="{{ route('user.book.show', $book->slug) }}"><img src="{{ asset('storage/' . $book->avatar) ?? 'https://www.contentviewspro.com/wp-content/uploads/2017/07/default_image.png' }}" alt="img"></a>
+                                <a href="{{ route('user.book.show', $book->slug) }}"><img
+                                        src="{{ asset('storage/' . $book->avatar) ?? 'https://www.contentviewspro.com/wp-content/uploads/2017/07/default_image.png' }}"
+                                        alt="img"></a>
                                 <ul class="post-box">
                                     <li>
                                         MỚI
@@ -282,7 +274,8 @@
                                 </ul>
                             </div>
                             <div class="shop-button">
-                                <a href="{{ route('user.book.show', $book->slug) }}" class="theme-btn"><i class="fa-solid fa-eye"></i>
+                                <a href="{{ route('user.book.show', $book->slug) }}" class="theme-btn"><i
+                                        class="fa-solid fa-eye"></i>
                                     Xem Chi Tiết</a>
                             </div>
                         </div>
@@ -303,7 +296,8 @@
                         style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">Gợi Ý Cho Bạn
                     </h2>
                 </div>
-                <a href="{{ route('user.book.index') }}" class="theme-btn transparent-btn wow fadeInUp" data-wow-delay=".5s"
+                <a href="{{ route('user.book.index') }}" class="theme-btn transparent-btn wow fadeInUp"
+                    data-wow-delay=".5s"
                     style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">Xem Tất Cả <i
                         class="fa-solid fa-arrow-right-long"></i></a>
             </div>
@@ -314,7 +308,9 @@
                         <div class="top-ratting-box-items">
                             <div class="book-thumb">
                                 <a href="{{ route('user.book.show', $book->slug) }}">
-                                    <img style="width: 64px; height: 92px;" src="{{ asset('storage/' . $book->avatar) ?? 'https://www.contentviewspro.com/wp-content/uploads/2017/07/default_image.png' }}" alt="img">
+                                    <img style="width: 64px; height: 92px;"
+                                        src="{{ asset('storage/' . $book->avatar) ?? 'https://www.contentviewspro.com/wp-content/uploads/2017/07/default_image.png' }}"
+                                        alt="img">
                                 </a>
                             </div>
                             <div class="book-content">
@@ -322,7 +318,8 @@
                                     <div>
                                         <h5> {{ $book->category->name }} </h5>
                                         <h3>
-                                            <a href="{{ route('user.book.show', $book->slug) }}">Simple Things You To Save BOOK</a>
+                                            <a href="{{ route('user.book.show', $book->slug) }}">Simple Things You To Save
+                                                BOOK</a>
                                         </h3>
                                     </div>
                                     <ul class="shop-icon d-flex justify-content-center align-items-center">
@@ -330,7 +327,8 @@
                                             <a href="#"><i class="far fa-heart"></i></a>
                                         </li>
                                         <li>
-                                            <a href="{{ route('user.book.show', $book->slug) }}"><i class="far fa-eye"></i></a>
+                                            <a href="{{ route('user.book.show', $book->slug) }}"><i
+                                                    class="far fa-eye"></i></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -364,6 +362,6 @@
 
 @endsection
 @section('script')
-    <!--<< Nice Select Js >>-->
-    <script src="{{ asset(path: 'assets/js/jquery.nice-select.min.js') }}"></script>
+<!--<< Nice Select Js >>-->
+<script src="{{ asset(path: 'assets/js/jquery.nice-select.min.js') }}"></script>
 @endsection

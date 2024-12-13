@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Banner;
 use App\Models\Book;
 use App\Models\Category;
 use App\Models\DetailOrder;
@@ -30,6 +31,16 @@ class UserHomeController extends Controller
             ->take(10)
             ->get();
 
-        return view('user.home.index', compact('newBooks', 'randomBooks', 'popularCategories', 'bestSellingBooks'));
+        // Lấy các sách bán được nhiều (dựa trên tổng số lượng trong DetailOrder, giới hạn 10 sách)
+        $slides = Banner::where('position', 'slide')
+            ->with(['book', 'category']) // Tải dữ liệu của book và category
+            ->get();
+        
+        // Lấy các sách bán được nhiều (dựa trên tổng số lượng trong DetailOrder, giới hạn 10 sách)
+        $banners = Banner::where('position', 'banner')
+            ->with(['book', 'category']) // Tải dữ liệu của book và category
+            ->get();
+
+        return view('user.home.index', compact('newBooks', 'randomBooks', 'popularCategories', 'bestSellingBooks', 'slides', 'banners'));
     }
 }

@@ -168,7 +168,7 @@
     </div>
 
     <!-- Sticky Header Section start  -->
-    <header class="header-1 sticky-header">
+    <header class="header-1 sticky-header" style="border-bottom: 1px solid #d8dce0;">
         <div class="mega-menu-wrapper">
             <div class="header-main">
                 <div class="container">
@@ -176,8 +176,8 @@
                         <div class="col-6 col-md-6 col-lg-10 col-xl-8 col-xxl-10">
                             <div class="header-left">
                                 <div class="logo">
-                                    <a href="{{ route('user.home.index') }}" class="header-logo">
-                                        <img src="{{ asset('assets/img/logo/white-logo.svg') }}" alt="logo-img">
+                                    <a href="{{ route('user.home.index') }}" class="header-logo" style="width: 100%;">
+                                        <img src="{{ asset('assets/img/logo/white-logo.svg') }}" style="width: 100%;" alt="logo-img">
                                     </a>
                                 </div>
                                 <div class="mean__menu-wrapper">
@@ -253,7 +253,7 @@
     </header>
 
     <!-- Main Header Section start  -->
-    <header class="header-1">
+    <header class="header-1" style="border-bottom: 1px solid #d8dce0;">
         <div class="mega-menu-wrapper">
             <div class="header-main">
                 <div class="container">
@@ -261,8 +261,8 @@
                         <div class="col-6 col-md-6 col-lg-10 col-xl-8 col-xxl-10">
                             <div class="header-left">
                                 <div class="logo">
-                                    <a href="{{ route('user.home.index') }}" class="header-logo">
-                                        <img src="{{ asset('assets/img/logo/white-logo.svg') }}" alt="logo-img">
+                                    <a href="{{ route('user.home.index') }}" class="header-logo" style="width: 100%;">
+                                        <img src="{{ asset('assets/img/logo/white-logo.svg') }}" style="width: 100%;" alt="logo-img">
                                     </a>
                                 </div>
                                 <div class="mean__menu-wrapper">

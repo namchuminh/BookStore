@@ -124,7 +124,7 @@ Route::get('/thanh-toan', [UserCheckoutController::class, 'index'])->name('user.
 Route::post('/thanh-toan', [UserCheckoutController::class, 'create'])->name('user.checkout.create');
 
 
-
+Route::get('/don-hang/{id}', [UserOrderController::class, 'show'])->name('user.order.show');
 
 
 
