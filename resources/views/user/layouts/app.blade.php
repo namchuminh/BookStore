@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <!--<< Header Area >>-->
+@php
+    $cartCount = 0;
+    if(auth()->user()){
+        $cartCount = \App\Models\Cart::where('user_id', auth()->user()->id)->count(); 
+    }
+@endphp
 
 <head>
     <!-- ========== Meta Tags ========== -->
@@ -34,9 +40,6 @@
 </head>
 
 <body>
-    <!-- Cursor follower -->
-    <div class="cursor-follower"></div>
-
     <!-- Back To Top start -->
     <button id="back-top" class="back-to-top">
         <i class="fa-solid fa-chevron-up"></i>
@@ -50,7 +53,7 @@
                     <div class="offcanvas__top mb-5 d-flex justify-content-between align-items-center">
                         <div class="offcanvas__logo">
                             <a href="index.html">
-                                <img src="assets/img/logo/black-logo.svg" alt="logo-img">
+                                <img src="{{ asset('assets/img/logo/black-logo.svg') }}" alt="logo-img">
                             </a>
                         </div>
                         <div class="offcanvas__close">
@@ -125,7 +128,7 @@
                 <ul class="contact-list">
                     <li>
                         <i class="fa-regular fa-phone"></i>
-                        <a href="tel:+20866660112">+208-6666-0112</a>
+                        <a href="tel:+20866660112">0999.999.999</a>
                     </li>
                     <li>
                         <i class="far fa-envelope"></i>
@@ -133,16 +136,34 @@
                     </li>
                     <li>
                         <i class="far fa-clock"></i>
-                        <span>Sunday - Fri: 9 aM - 6 pM</span>
+                        <span>Thứ 2 - Thứ 7: 09h00 - 18h00</span>
                     </li>
                 </ul>
                 <ul class="list">
-                    <li><i class="fa-light fa-comments"></i><a href="contact.html">Live Chat</a></li>
-                    <li><i class="fa-light fa-user"></i>
-                        <button data-bs-toggle="modal" data-bs-target="#loginModal">
-                            Login
-                        </button>
-                    </li>
+                    @if (auth()->user())
+                        <li><i class="fa-light fa-user"></i>
+                            <a href="{{ route('user.customer.index') }}">
+                                {{ auth()->user()->name }}
+                            </a>
+                        </li>
+                        <li><i class="fa-solid fa-arrow-right-from-bracket"></i>
+                            <a href="{{ route('user.logout.index') }}">
+                                Đăng Xuất
+                            </a>
+                        </li>
+                    @else
+                        <li>
+                            <i class="fa-light fa-user-plus"></i>
+                            <button data-bs-toggle="modal" data-bs-target="#registrationModal">
+                                Đăng Ký
+                            </button>
+                        </li>
+                        <li><i class="fa-light fa-user"></i>
+                            <button data-bs-toggle="modal" data-bs-target="#loginModal">
+                                Đăng Nhập
+                            </button>
+                        </li>
+                    @endif
                 </ul>
             </div>
         </div>
@@ -157,8 +178,8 @@
                         <div class="col-6 col-md-6 col-lg-10 col-xl-8 col-xxl-10">
                             <div class="header-left">
                                 <div class="logo">
-                                    <a href="index.html" class="header-logo">
-                                        <img src="assets/img/logo/white-logo.svg" alt="logo-img">
+                                    <a href="{{ route('user.home.index') }}" class="header-logo">
+                                        <img src="{{ asset('assets/img/logo/white-logo.svg') }}" alt="logo-img">
                                     </a>
                                 </div>
                                 <div class="mean__menu-wrapper">
@@ -166,63 +187,29 @@
                                         <nav>
                                             <ul>
                                                 <li>
-                                                    <a href="index.html">
-                                                        Home
-                                                        <i class="fas fa-angle-down"></i>
+                                                    <a href="{{ route('user.home.index') }}">
+                                                        Trang Chủ
                                                     </a>
-                                                    <ul class="submenu">
-                                                        <li><a href="index.html">Home 01</a></li>
-                                                        <li><a href="index-2.html">Home 02</a></li>
-                                                    </ul>
                                                 </li>
                                                 <li>
-                                                    <a href="shop.html">
-                                                        Shop
-                                                        <i class="fas fa-angle-down"></i>
+                                                    <a href="{{ route('user.home.index') }}">
+                                                        Sản Phẩm
                                                     </a>
-                                                    <ul class="submenu">
-                                                        <li><a href="shop.html">Shop Default</a></li>
-                                                        <li><a href="shop-list.html">Shop List</a></li>
-                                                        <li><a href="shop-details.html">Shop Details</a></li>
-                                                        <li><a href="shop-cart.html">Shop Cart</a></li>
-                                                        <li><a href="wishlist.html">Wishlist</a></li>
-                                                        <li><a href="checkout.html">Checkout</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="has-dropdown">
-                                                    <a href="about.html">
-                                                        Pages
-                                                        <i class="fas fa-angle-down"></i>
-                                                    </a>
-                                                    <ul class="submenu">
-                                                        <li><a href="about.html">About Us</a></li>
-                                                        <li class="has-dropdown">
-                                                            <a href="team.html">
-                                                                Author
-                                                                <i class="fas fa-angle-down"></i>
-                                                            </a>
-                                                            <ul class="submenu">
-                                                                <li><a href="team.html">Author</a></li>
-                                                                <li><a href="team-details.html">Author Profile</a></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li><a href="faq.html">Faq's</a></li>
-                                                        <li><a href="404.html">404 Page</a></li>
-                                                    </ul>
                                                 </li>
                                                 <li>
-                                                    <a href="news.html">
-                                                        Blog
-                                                        <i class="fas fa-angle-down"></i>
+                                                    <a href="{{ route('user.home.index') }}">
+                                                        Thể Loại
                                                     </a>
-                                                    <ul class="submenu">
-                                                        <li><a href="news-grid.html">Blog Grid</a></li>
-                                                        <li><a href="news.html">Blog List</a></li>
-                                                        <li><a href="news-details.html">Blog Details</a></li>
-                                                    </ul>
                                                 </li>
                                                 <li>
-                                                    <a href="contact.html">Contact</a>
+                                                    <a href="{{ route('user.home.index') }}">
+                                                        Liên Hệ
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('user.home.index') }}">
+                                                        Tin Tức
+                                                    </a>
                                                 </li>
                                             </ul>
                                         </nav>
@@ -233,30 +220,10 @@
                         <div class="col-6 col-md-6 col-lg-2 col-xl-4 col-xxl-2">
                             <div class="header-right">
                                 <div class="category-oneadjust gap-6 d-flex align-items-center">
-                                    <div class="icon">
-                                        <i class="fa-sharp fa-solid fa-grid-2"></i>
-                                    </div>
-                                    <select name="cate" class="category">
-                                        <option value="1">
-                                            Category
-                                        </option>
-                                        <option value="1">
-                                            Web Design
-                                        </option>
-                                        <option value="1">
-                                            Web Development
-                                        </option>
-                                        <option value="1">
-                                            Graphic Design
-                                        </option>
-                                        <option value="1">
-                                            Softwer Eng
-                                        </option>
-                                    </select>
-                                    <form action="#" class="search-toggle-box d-md-block">
+                                    <form action="{{ route('user.book.index') }}" class="search-toggle-box d-md-block">
                                         <div class="input-area">
-                                            <input type="text" placeholder="Author">
-                                            <button class="cmn-btn">
+                                            <input style="border-radius: 100px;" type="text" name="search" placeholder="Tìm kiếm">
+                                            <button type="submit" class="cmn-btn">
                                                 <i class="far fa-search"></i>
                                             </button>
                                         </div>
@@ -266,13 +233,13 @@
                                     <a href="wishlist.html" class="cart-icon">
                                         <i class="fa-regular fa-heart"></i>
                                     </a>
-                                    <a href="shop-cart.html" class="cart-icon">
+                                    <a href="{{ route('user.cart.index') }}" class="cart-icon">
                                         <i class="fa-regular fa-cart-shopping"></i>
                                     </a>
                                     <div class="header-humbager ml-30">
                                         <a class="sidebar__toggle" href="javascript:void(0)">
                                             <div class="bar-icon-2">
-                                                <img src="assets/img/icon/icon-13.svg" alt="img">
+                                                <img src="{{ asset('assets/img/icon/icon-13.svg') }}" alt="img">
                                             </div>
                                         </a>
                                     </div>
@@ -296,8 +263,8 @@
                         <div class="col-6 col-md-6 col-lg-10 col-xl-8 col-xxl-10">
                             <div class="header-left">
                                 <div class="logo">
-                                    <a href="index.html" class="header-logo">
-                                        <img src="assets/img/logo/white-logo.svg" alt="logo-img">
+                                    <a href="{{ route('user.home.index') }}" class="header-logo">
+                                        <img src="{{ asset('assets/img/logo/white-logo.svg') }}" alt="logo-img">
                                     </a>
                                 </div>
                                 <div class="mean__menu-wrapper">
@@ -305,63 +272,29 @@
                                         <nav id="mobile-menu">
                                             <ul>
                                                 <li>
-                                                    <a href="index.html">
-                                                        Home
-                                                        <i class="fas fa-angle-down"></i>
+                                                    <a href="{{ route('user.home.index') }}">
+                                                        Trang Chủ
                                                     </a>
-                                                    <ul class="submenu">
-                                                        <li><a href="index.html">Home 01</a></li>
-                                                        <li><a href="index-2.html">Home 02</a></li>
-                                                    </ul>
                                                 </li>
                                                 <li>
-                                                    <a href="shop.html">
-                                                        Shop
-                                                        <i class="fas fa-angle-down"></i>
+                                                    <a href="{{ route('user.home.index') }}">
+                                                        Sản Phẩm
                                                     </a>
-                                                    <ul class="submenu">
-                                                        <li><a href="shop.html">Shop Default</a></li>
-                                                        <li><a href="shop-list.html">Shop List</a></li>
-                                                        <li><a href="shop-details.html">Shop Details</a></li>
-                                                        <li><a href="shop-cart.html">Shop Cart</a></li>
-                                                        <li><a href="wishlist.html">Wishlist</a></li>
-                                                        <li><a href="checkout.html">Checkout</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="has-dropdown">
-                                                    <a href="about.html">
-                                                        Pages
-                                                        <i class="fas fa-angle-down"></i>
-                                                    </a>
-                                                    <ul class="submenu">
-                                                        <li><a href="about.html">About Us</a></li>
-                                                        <li class="has-dropdown">
-                                                            <a href="team.html">
-                                                                Author
-                                                                <i class="fas fa-angle-down"></i>
-                                                            </a>
-                                                            <ul class="submenu">
-                                                                <li><a href="team.html">Author</a></li>
-                                                                <li><a href="team-details.html">Author Profile</a></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li><a href="faq.html">Faq's</a></li>
-                                                        <li><a href="404.html">404 Page</a></li>
-                                                    </ul>
                                                 </li>
                                                 <li>
-                                                    <a href="news.html">
-                                                        Blog
-                                                        <i class="fas fa-angle-down"></i>
+                                                    <a href="{{ route('user.home.index') }}">
+                                                        Thể Loại
                                                     </a>
-                                                    <ul class="submenu">
-                                                        <li><a href="news-grid.html">Blog Grid</a></li>
-                                                        <li><a href="news.html">Blog List</a></li>
-                                                        <li><a href="news-details.html">Blog Details</a></li>
-                                                    </ul>
                                                 </li>
                                                 <li>
-                                                    <a href="contact.html">Contact</a>
+                                                    <a href="{{ route('user.home.index') }}">
+                                                        Liên Hệ
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('user.home.index') }}">
+                                                        Tin Tức
+                                                    </a>
                                                 </li>
                                             </ul>
                                         </nav>
@@ -372,30 +305,10 @@
                         <div class="col-6 col-md-6 col-lg-2 col-xl-4 col-xxl-2">
                             <div class="header-right">
                                 <div class="category-oneadjust gap-6 d-flex align-items-center">
-                                    <div class="icon">
-                                        <i class="fa-sharp fa-solid fa-grid-2"></i>
-                                    </div>
-                                    <select name="cate" class="category">
-                                        <option value="1">
-                                            Category
-                                        </option>
-                                        <option value="1">
-                                            Web Design
-                                        </option>
-                                        <option value="1">
-                                            Web Development
-                                        </option>
-                                        <option value="1">
-                                            Graphic Design
-                                        </option>
-                                        <option value="1">
-                                            Softwer Eng
-                                        </option>
-                                    </select>
-                                    <form action="#" class="search-toggle-box d-md-block">
+                                    <form action="{{ route('user.book.index') }}" class="search-toggle-box d-md-block">
                                         <div class="input-area">
-                                            <input type="text" placeholder="Author">
-                                            <button class="cmn-btn">
+                                            <input style="border-radius: 100px;" type="text" name="search" placeholder="Tìm kiếm">
+                                            <button type="submit" class="cmn-btn">
                                                 <i class="far fa-search"></i>
                                             </button>
                                         </div>
@@ -405,13 +318,13 @@
                                     <a href="wishlist.html" class="cart-icon">
                                         <i class="fa-regular fa-heart"></i>
                                     </a>
-                                    <a href="shop-cart.html" class="cart-icon">
+                                    <a href="{{ route('user.cart.index') }}" class="cart-icon" >
                                         <i class="fa-regular fa-cart-shopping"></i>
                                     </a>
                                     <div class="header-humbager ml-30">
                                         <a class="sidebar__toggle" href="javascript:void(0)">
                                             <div class="bar-icon-2">
-                                                <img src="assets/img/icon/icon-13.svg" alt="img">
+                                                <img src="{{ asset('assets/img/icon/icon-13.svg') }}" alt="img">
                                             </div>
                                         </a>
                                     </div>
@@ -434,54 +347,24 @@
                     <div class="close-btn">
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="identityBox">
+                    <div class="identityBox" style="display: block; place-items: normal;">
                         <div class="form-wrapper">
-                            <h1 id="loginModalLabel">welcome back!</h1>
-                            <input class="inputField" type="email" name="email" placeholder="Email Address">
-                            <input class="inputField" type="password" name="password" placeholder="Enter Password">
+                            <h1 id="loginModalLabel">Đăng nhập</h1>
+                            <div class="my-3 text-center">
+                                <p class="error"></p>
+                            </div>
+                            <input class="inputField username" type="text" name="username" placeholder="Tài khoản">
+                            <input class="inputField password" type="password" name="password" placeholder="Mật khẩu">
                             <div class="input-check remember-me">
                                 <div class="checkbox-wrapper">
                                     <input type="checkbox" class="form-check-input" name="save-for-next"
                                         id="saveForNext">
-                                    <label for="saveForNext">Remember me</label>
+                                    <label for="saveForNext">Nhớ Mật Khẩu</label>
                                 </div>
-                                <div class="text"> <a href="index-2.html">Forgot Your password?</a> </div>
+                                <div class="text"> <a href="#">Quên mật khẩu?</a> </div>
                             </div>
                             <div class="loginBtn">
-                                <a href="index-2.html" class="theme-btn rounded-0"> Log in </a>
-                            </div>
-                            <div class="orting-badge">
-                                Or
-                            </div>
-                            <div>
-                                <a class="another-option" href="https://www.google.com/">
-                                    <img src="assets/img/google.png" alt="google">
-                                    Continue With Google
-                                </a>
-                            </div>
-                            <div>
-                                <a class="another-option another-option-two" href="https://www.facebook.com/">
-                                    <img src="assets/img/facebook.png" alt="google">
-                                    Continue With Facebook
-                                </a>
-                            </div>
-
-                            <div class="form-check-3 d-flex align-items-center from-customradio-2 mt-3">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault">
-                                <label class="form-check-label">
-                                    I Accept Your Terms & Conditions
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="banner">
-                            <button type="button" class="rounded-0 login-btn" data-bs-toggle="modal"
-                                data-bs-target="#loginModal">Log in</button>
-                            <button type="button" class="theme-btn rounded-0 register-btn" data-bs-toggle="modal"
-                                data-bs-target="#registrationModal">Create
-                                Account</button>
-                            <div class="loginBg">
-                                <img src="assets/img/signUpbg.jpg" alt="signUpBg">
+                                <a href="#" class="theme-btn rounded-0"> Đăng Nhập</a>
                             </div>
                         </div>
                     </div>
@@ -499,7 +382,7 @@
                     <div class="close-btn">
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="identityBox">
+                    <div class="identityBox" style="display: block; place-items: normal;">
                         <div class="form-wrapper">
                             <h1 id="registrationModalLabel">Create account!</h1>
                             <input class="inputField" type="text" name="name" id="name" placeholder="User Name">
@@ -511,7 +394,7 @@
                                 <div class="checkbox-wrapper">
                                     <input type="checkbox" class="form-check-input" name="save-for-next"
                                         id="rememberMe">
-                                    <label for="rememberMe">Remember me</label>
+                                    <label for="rememberMe">Nhớ Mật Khẩu</label>
                                 </div>
                                 <div class="text"> <a href="index-2.html">Forgot Your password?</a> </div>
                             </div>
@@ -538,17 +421,6 @@
                                 <label class="form-check-label">
                                     I Accept Your Terms & Conditions
                                 </label>
-                            </div>
-                        </div>
-
-                        <div class="banner">
-                            <button type="button" class="rounded-0 login-btn" data-bs-toggle="modal"
-                                data-bs-target="#loginModal">Log in</button>
-                            <button type="button" class="theme-btn rounded-0 register-btn" data-bs-toggle="modal"
-                                data-bs-target="#registrationModal">Create
-                                Account</button>
-                            <div class="signUpBg">
-                                <img src="assets/img/registrationbg.jpg" alt="signUpBg">
                             </div>
                         </div>
                     </div>
@@ -780,6 +652,79 @@
     <!--<< Main.js') }} >>-->
     <script src="{{ asset('assets/js/main.js') }}"></script>
 </body>
+<style>
+    .cart-icon::before {
+        content: "{{ $cartCount }}";
+    }
+</style>
+<script>
+    $(document).ready(function () {
+        $('.loginBtn').on('click', function (e) {
+            e.preventDefault(); // Ngăn form reload
 
+            // Lấy giá trị từ input
+            let username = $('.username').val()
+            let password = $('.password').val()
+
+            // Kiểm tra input rỗng
+            if (!username || !password) {
+                $('.error').text('Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu.');
+                return;
+            }
+
+            // Gửi dữ liệu bằng Ajax
+            $.ajax({
+                url: '{{ route('user.login.submit') }}', // Route gửi dữ liệu
+                type: 'POST',
+                data: {
+                    username: username,
+                    password: password,
+                    _token: '{{ csrf_token() }}' // Bảo mật CSRF
+                },
+                success: function (response) {
+                    // Kiểm tra phản hồi
+                    if (response.error) {
+                        $('.error').text(response.error); // Hiển thị lỗi
+                    } else {
+                        location.reload();
+                    }
+                },
+                error: function (xhr) {
+                    // Xử lý lỗi khi gửi request
+                    $('.error').text('Đã xảy ra lỗi. Vui lòng thử lại sau.');
+                }
+            });
+        });
+    });
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 </html>
+@if (session('success'))
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script>
+        $(document).ready(function () {
+            Toastify({
+                text: '{{ session('success') }}',
+                duration: 5000, // thời gian hiển thị (ms)
+                close: true, // nút đóng
+                gravity: "bottom", // vị trí: "top" hoặc "bottom"
+                position: "center", // "left", "center", "right"
+            }).showToast();
+        });
+    </script>
+@endif
+@if (session('error'))
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script>
+        $(document).ready(function () {
+            Toastify({
+                text: '{{ session('error') }}',
+                duration: 5000, // thời gian hiển thị (ms)
+                close: true, // nút đóng
+                gravity: "bottom", // vị trí: "top" hoặc "bottom"
+                position: "center", // "left", "center", "right"
+            }).showToast();
+        });
+    </script>
+@endif
 @yield('script')

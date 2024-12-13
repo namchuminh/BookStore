@@ -123,8 +123,21 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="century">Thế Kỷ</label>
-                            <input type="text" class="form-control" id="century" name="century" placeholder="Thế kỷ" value="{{ old('century', $book->century) }}">
+                            <label for="century">Quốc Gia</label>
+                            <input type="text" class="form-control" id="century" name="century" placeholder="Quốc gia" value="{{ old('century', $book->century) }}">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="description">Mô Tả Ngắn</label>
+                            <textarea rows="3" name="description" class="form-control" id="description" placeholder="Mô tả ngắn">{{ old('description', $book->description) }}</textarea>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="summary">Tóm Tắt Nội Dung</label>
+                            <textarea name="summary" class="form-control" id="summary">{{ old('summary', $book->summary) }}</textarea>
                         </div>
                     </div>
                 </div>
@@ -143,6 +156,26 @@
 </style>
 
 @section('script')
+<script src="https://cdn.ckeditor.com/ckeditor5/38.1.1/classic/ckeditor.js"></script>
+<script>
+    ClassicEditor
+        .create(document.querySelector('#summary'), {
+            // Cấu hình toolbar tùy chỉnh
+            toolbar: [
+                'heading', '|', 
+                'bold', 'italic', 'underline', 'strikethrough', '|', 
+                'link', 'bulletedList', 'numberedList', '|', 
+                'blockQuote', 'insertTable', 'undo', 'redo'
+            ],
+            language: 'vi', // Đặt ngôn ngữ Tiếng Việt (nếu cần)
+        })
+        .then(editor => {
+            console.log('CKEditor 5 đã sẵn sàng!', editor);
+        })
+        .catch(error => {
+            console.error('Lỗi khi khởi tạo CKEditor 5:', error);
+        });
+</script>
 <script>
     $(document).ready(function() {
         function createSlug(name) {

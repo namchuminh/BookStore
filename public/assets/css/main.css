@@ -1470,7 +1470,7 @@ span {
   display: flex;
   align-items: center;
   justify-content: end;
-  gap: 300px;
+  gap: 200px;
 }
 @media (max-width: 1600px) {
   .header-top-wrapper {
@@ -1813,7 +1813,6 @@ span {
   position: absolute;
   top: -7px;
   left: 0;
-  content: "0";
   width: 18px;
   line-height: 18px;
   height: 18px;
@@ -2042,7 +2041,7 @@ span {
 .header-1 .header-left {
   display: flex;
   align-items: center;
-  gap: 50px;
+  gap: 200px;
   position: relative;
 }
 @media (max-width: 1600px) {
@@ -2484,7 +2483,6 @@ span {
   position: absolute;
   top: -7px;
   left: 0;
-  content: "0";
   width: 18px;
   line-height: 18px;
   height: 18px;
@@ -2882,7 +2880,6 @@ span {
   position: absolute;
   top: -7px;
   left: 0;
-  content: "0";
   width: 18px;
   line-height: 18px;
   height: 18px;

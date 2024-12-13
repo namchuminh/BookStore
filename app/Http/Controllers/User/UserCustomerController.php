@@ -7,5 +7,7 @@ use Illuminate\Http\Request;
 
 class UserCustomerController extends Controller
 {
-    //
+    public function index(){
+        dd(1);
+    }
 }

@@ -96,8 +96,9 @@ Route::get('/sach', [UserBookController::class, 'index'])->name('user.book.index
 Route::get('/sach/{slug}', [UserBookController::class, 'show'])->name('user.book.show');
 
 Route::get('/gio-hang', [UserCartController::class, 'index'])->name('user.cart.index');
-Route::put('/gio-hang/{id}', [UserBookController::class, 'update'])->name('user.cart.update');
-Route::delete('/gio-hang/{id}', [UserBookController::class, 'destroy'])->name('user.cart.delete');
+Route::post('/gio-hang', [UserCartController::class, 'add'])->name('user.cart.add');
+Route::put('/gio-hang/{id}', [UserCartController::class, 'update'])->name('user.cart.update');
+Route::get('/gio-hang/xoa/{id}', [UserCartController::class, 'destroy'])->name('user.cart.delete');
 
 Route::get('/dat-hang', [UserOrderController::class, 'index'])->name('user.order.index');
 

@@ -16,7 +16,7 @@ class UserHomeController extends Controller
         $newBooks = Book::with('category')->orderBy('created_at', 'desc')->take(10)->get();
 
         // Lấy 6 sách ngẫu nhiên
-        $randomBooks = Book::inRandomOrder()->take(6)->get();
+        $randomBooks = Book::with('category')->inRandomOrder()->take(6)->get();
 
         // Lấy các chuyên mục nhiều sách (giới hạn 5 chuyên mục)
         $popularCategories = Category::withCount('books')
@@ -25,7 +25,7 @@ class UserHomeController extends Controller
             ->get();
 
         // Lấy các sách bán được nhiều (dựa trên tổng số lượng trong DetailOrder, giới hạn 10 sách)
-        $bestSellingBooks = Book::withSum('detailOrders', 'quantity')
+        $bestSellingBooks = Book::with('category')->withSum('detailOrders', 'quantity')
             ->orderBy('detail_orders_sum_quantity', 'desc')
             ->take(10)
             ->get();

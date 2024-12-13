@@ -25,7 +25,9 @@ class Book extends Model
         'language',
         'century',
         'slug',
-        'author'
+        'author',
+        'summary',
+        'description'
     ];
 
     public function category()
@@ -36,5 +38,10 @@ class Book extends Model
     public function detailOrders()
     {
         return $this->hasMany(DetailOrder::class, 'book_id');
+    }
+
+    public function carts()
+    {
+        return $this->hasMany(Cart::class);
     }
 }
