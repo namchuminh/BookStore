@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2024 at 02:15 PM
+-- Generation Time: Dec 13, 2024 at 06:50 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -66,6 +66,11 @@ CREATE TABLE `books` (
   `format` varchar(255) NOT NULL,
   `language` varchar(255) NOT NULL,
   `century` varchar(255) NOT NULL,
+  `slug` text NOT NULL DEFAULT 'sach-moi',
+  `star` int(11) NOT NULL DEFAULT 0,
+  `author` varchar(255) NOT NULL DEFAULT 'Chưa Có Tác Giả',
+  `summary` text NOT NULL,
+  `description` text NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -74,9 +79,18 @@ CREATE TABLE `books` (
 -- Dumping data for table `books`
 --
 
-INSERT INTO `books` (`id`, `name`, `avatar`, `image`, `price`, `origin_price`, `quantity`, `sku`, `tags`, `total_page`, `published_year`, `category_id`, `format`, `language`, `century`, `created_at`, `updated_at`) VALUES
-(1, 'Sách Mới', 'books/avatars/NVeeruDKSAaWbDF7YNfBosEWGgS6ylds0Ngozbsz.jpg', 'http://127.0.0.1:8000/images/books/1734000872_675ac0e89d58a.jpg#http://127.0.0.1:8000/images/books/1734000872_675ac0e89e394.jpg#http://127.0.0.1:8000/images/books/1734000872_675ac0e89ea32.jpg', 150000, 200000, 50, 'HTOKM', 'Hải Sản, Pizza.', '300', '2020', 1, 'Bìa Cứng', 'Việt Nam', 'Thế kỷ 20', '2024-12-12 03:47:32', '2024-12-12 03:54:32'),
-(3, 'Sách mới 234', 'books/avatars/QH1XnpD71avNksj6aiOt1nuybS7MgskzqUCQFh18.jpg', 'http://127.0.0.1:8000/images/books/1734001072_675ac1b018cdd.jpg#http://127.0.0.1:8000/images/books/1734001072_675ac1b01978c.jpg#http://127.0.0.1:8000/images/books/1734001072_675ac1b019ed7.jpg', 20000, 125000, 20, 'HHHNAM2', 'pizza, bánh pizza giao diện, pizza mới', '5000', '2023', 1, 'Bìa Cứng', 'Việt Nam', 'Thế kỷ 20', '2024-12-12 03:57:52', '2024-12-12 03:57:52');
+INSERT INTO `books` (`id`, `name`, `avatar`, `image`, `price`, `origin_price`, `quantity`, `sku`, `tags`, `total_page`, `published_year`, `category_id`, `format`, `language`, `century`, `slug`, `star`, `author`, `summary`, `description`, `created_at`, `updated_at`) VALUES
+(1, 'Sách Mới', 'books/avatars/NVeeruDKSAaWbDF7YNfBosEWGgS6ylds0Ngozbsz.jpg', 'http://127.0.0.1:8000/images/books/1734000872_675ac0e89d58a.jpg#http://127.0.0.1:8000/images/books/1734000872_675ac0e89e394.jpg#http://127.0.0.1:8000/images/books/1734000872_675ac0e89ea32.jpg', 150000, 500000, 50, 'HTOKM', 'Hải Sản, Pizza.', '300', '2020', 1, 'Bìa Cứng', 'Việt Nam', 'Thế kỷ 20', 'sach-moi', 0, 'Chưa Có Tác Giả', '', '', '2024-12-12 03:47:32', '2024-12-12 03:54:32'),
+(3, 'Sách mới 234', 'books/avatars/QH1XnpD71avNksj6aiOt1nuybS7MgskzqUCQFh18.jpg', 'http://127.0.0.1:8000/images/books/1734001072_675ac1b018cdd.jpg#http://127.0.0.1:8000/images/books/1734001072_675ac1b01978c.jpg#http://127.0.0.1:8000/images/books/1734001072_675ac1b019ed7.jpg', 20000, 500000, 20, 'HHHNAM2', 'pizza, bánh pizza giao diện, pizza mới', '5000', '2023', 1, 'Bìa Cứng', 'Việt Nam', 'Thế kỷ 20', 'sach-moi111', 0, 'Chưa Có Tác Giả', '', '', '2024-12-12 03:57:52', '2024-12-13 02:33:00'),
+(5, 'Sách mới 2', 'books/avatars/NVeeruDKSAaWbDF7YNfBosEWGgS6ylds0Ngozbsz.jpg', 'http://127.0.0.1:8000/images/books/1734000872_675ac0e89d58a.jpg#http://127.0.0.1:8000/images/books/1734000872_675ac0e89e394.jpg#http://127.0.0.1:8000/images/books/1734000872_675ac0e89ea32.jpg', 150000, 500000, 5, 'ANVFER', 'book, sách', '300', '2020', 1, 'Sách', 'Việt Nam', 'Thế kỷ 21', 'sach-moi', 0, 'Chưa Có Tác Giả', '', '', '2024-12-13 09:04:34', '2024-12-13 09:04:34'),
+(6, 'Sách mới 3', 'books/avatars/NVeeruDKSAaWbDF7YNfBosEWGgS6ylds0Ngozbsz.jpg', 'http://127.0.0.1:8000/images/books/1734000872_675ac0e89d58a.jpg#http://127.0.0.1:8000/images/books/1734000872_675ac0e89e394.jpg#http://127.0.0.1:8000/images/books/1734000872_675ac0e89ea32.jpg', 150000, 500000, 5, 'ANVFER', 'book, sách', '300', '2020', 1, 'Sách', 'Việt Nam', 'Thế kỷ 21', 'sach-moi', 0, 'Chưa Có Tác Giả', '', '', '2024-12-13 09:04:34', '2024-12-13 09:04:34'),
+(7, 'Sách mới 4', 'books/avatars/NVeeruDKSAaWbDF7YNfBosEWGgS6ylds0Ngozbsz.jpg', 'http://127.0.0.1:8000/images/books/1734000872_675ac0e89d58a.jpg#http://127.0.0.1:8000/images/books/1734000872_675ac0e89e394.jpg#http://127.0.0.1:8000/images/books/1734000872_675ac0e89ea32.jpg', 150000, 500000, 5, 'ANVFER', 'book, sách', '300', '2020', 1, 'Sách', 'Việt Nam', 'Thế kỷ 21', 'sach-moi', 0, 'Chưa Có Tác Giả', '', '', '2024-12-13 09:04:34', '2024-12-13 09:04:34'),
+(8, 'Sách mới 6', 'books/avatars/NVeeruDKSAaWbDF7YNfBosEWGgS6ylds0Ngozbsz.jpg', 'http://127.0.0.1:8000/images/books/1734000872_675ac0e89d58a.jpg#http://127.0.0.1:8000/images/books/1734000872_675ac0e89e394.jpg#http://127.0.0.1:8000/images/books/1734000872_675ac0e89ea32.jpg', 150000, 500000, 5, 'ANVFER', 'book, sách', '300', '2020', 1, 'Sách', 'Việt Nam', 'Thế kỷ 21', 'sach-moi', 0, 'Chưa Có Tác Giả', '', '', '2024-12-13 09:04:34', '2024-12-13 09:04:34'),
+(9, 'Sách mới 7', 'books/avatars/NVeeruDKSAaWbDF7YNfBosEWGgS6ylds0Ngozbsz.jpg', 'http://127.0.0.1:8000/images/books/1734000872_675ac0e89d58a.jpg#http://127.0.0.1:8000/images/books/1734000872_675ac0e89e394.jpg#http://127.0.0.1:8000/images/books/1734000872_675ac0e89ea32.jpg', 150000, 500000, 5, 'ANVFER', 'book, sách', '300', '2020', 1, 'Sách', 'Việt Nam', 'Thế kỷ 21', 'sach-moi', 0, 'Chưa Có Tác Giả', '', '', '2024-12-13 09:04:34', '2024-12-13 09:04:34'),
+(10, 'Sách mới 8', 'books/avatars/NVeeruDKSAaWbDF7YNfBosEWGgS6ylds0Ngozbsz.jpg', 'http://127.0.0.1:8000/images/books/1734000872_675ac0e89d58a.jpg#http://127.0.0.1:8000/images/books/1734000872_675ac0e89e394.jpg#http://127.0.0.1:8000/images/books/1734000872_675ac0e89ea32.jpg', 150000, 500000, 5, 'ANVFER', 'book, sách', '300', '2020', 1, 'Sách', 'Việt Nam', 'Thế kỷ 21', 'sach-moi', 0, 'Chưa Có Tác Giả', '', '', '2024-12-13 09:04:34', '2024-12-13 09:04:34'),
+(11, 'Sách mới 9', 'books/avatars/NVeeruDKSAaWbDF7YNfBosEWGgS6ylds0Ngozbsz.jpg', 'http://127.0.0.1:8000/images/books/1734000872_675ac0e89d58a.jpg#http://127.0.0.1:8000/images/books/1734000872_675ac0e89e394.jpg#http://127.0.0.1:8000/images/books/1734000872_675ac0e89ea32.jpg', 150000, 500000, 5, 'ANVFER', 'book, sách', '300', '2020', 1, 'Sách', 'Việt Nam', 'Thế kỷ 21', 'sach-moi', 0, 'Chưa Có Tác Giả', '', '', '2024-12-13 09:04:34', '2024-12-13 09:04:34'),
+(12, 'Sách mới 10', 'books/avatars/NVeeruDKSAaWbDF7YNfBosEWGgS6ylds0Ngozbsz.jpg', 'http://127.0.0.1:8000/images/books/1734000872_675ac0e89d58a.jpg#http://127.0.0.1:8000/images/books/1734000872_675ac0e89e394.jpg#http://127.0.0.1:8000/images/books/1734000872_675ac0e89ea32.jpg', 150000, 500000, 5, 'ANVFER333', 'book, sách', '300', '2020', 1, 'Sách', 'Việt Nam', 'Thế kỷ 21', 'sach-moi111111', 0, 'Nguyễn Văn An', '<p>Tóm tắt sách</p>', 'ab', '2024-12-13 09:04:34', '2024-12-13 06:54:35'),
+(13, 'Sách mới 12', 'books/avatars/StCunuFMRPPw7sFWuJvMyIa3Kheh5mbZ8zI9DKWm.jpg', 'http://127.0.0.1:8000/images/books/1734098151_675c3ce77ad74.jpg#http://127.0.0.1:8000/images/books/1734098151_675c3ce77bba1.jpg#http://127.0.0.1:8000/images/books/1734098151_675c3ce77c0ca.png#http://127.0.0.1:8000/images/books/1734098151_675c3ce77c6d5.jpg', 10000, 150000, 15, 'TRE4553', 'sách mới, sách hay', '200', '2021', 1, 'Bìa Cứng', 'Việt Nam', 'Việt Nam', 'sach-moi-12', 0, 'Nguyễn Văn An', '<p>Cuốn sách \"7 loại hình thông minh\" đưa ra những ví dụ cụ thể về những phương pháp ứng xử thông minh, tài năng đã giành được điểm cao trong các cuộc thi nghề nghiệp, được lấy từ vô số những nền văn hoá khác nhau trên thế giới.&nbsp;</p><p>Bạn cũng có cơ hội để thực tập những kỹ năng quan sát của Klahari Bushman, khả năng giao cảm, hiểu người của vị quan Manhatan, phương pháp thiền của vị sư Phật</p>', 'abcde', '2024-12-13 06:55:51', '2024-12-13 06:55:51');
 
 -- --------------------------------------------------------
 
@@ -92,6 +106,13 @@ CREATE TABLE `carts` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `carts`
+--
+
+INSERT INTO `carts` (`id`, `book_id`, `user_id`, `quantity`, `created_at`, `updated_at`) VALUES
+(6, 1, 2, 1, '2024-12-13 10:34:02', '2024-12-13 10:34:02');
 
 -- --------------------------------------------------------
 
@@ -113,7 +134,8 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `name`, `slug`, `image`, `created_at`, `updated_at`) VALUES
-(1, 'Sách Thiếu Nhi', 'sach-thieu-nhi', 'categories/hYXLlVo0E2slQ94PrAMzHUzkOzuZ6agQBZWsTpNM.jpg', '2024-12-12 03:14:08', '2024-12-12 03:15:57');
+(1, 'Sách Thiếu Nhi', 'sach-thieu-nhi', 'categories/hYXLlVo0E2slQ94PrAMzHUzkOzuZ6agQBZWsTpNM.jpg', '2024-12-12 03:14:08', '2024-12-12 03:15:57'),
+(2, 'Mục Mới', 'muc-moi', 'categories/hYXLlVo0E2slQ94PrAMzHUzkOzuZ6agQBZWsTpNM.jpg', '2024-12-13 17:46:17', '2024-12-13 17:46:17');
 
 -- --------------------------------------------------------
 
@@ -152,6 +174,13 @@ CREATE TABLE `detail_orders` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `detail_orders`
+--
+
+INSERT INTO `detail_orders` (`id`, `book_id`, `order_id`, `quantity`, `created_at`, `updated_at`) VALUES
+(1, 1, 2, 1, '2024-12-13 10:28:40', '2024-12-13 10:28:40');
 
 -- --------------------------------------------------------
 
@@ -221,7 +250,8 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `code`, `user_id`, `amount`, `payment`, `address`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'KJFGNIJKDFN', 2, 150000, 'cod', 'Hà Nội', 'pending', '2024-12-12 12:44:42', '2024-12-12 06:10:18');
+(1, 'KJFGNIJKDFN', 2, 150000, 'cod', 'Hà Nội', 'pending', '2024-12-12 12:44:42', '2024-12-12 06:10:18'),
+(2, 'ORD-675C6EC826605', 2, 150000, 'cod', 'Tầng 1, Tòa ABC, Đường XYZ, Quận JQK, Phường Trần Phú, Thành phố Qui Nhơn, Tỉnh Bình Định', 'pending', '2024-12-13 10:28:40', '2024-12-13 10:35:17');
 
 -- --------------------------------------------------------
 
@@ -281,7 +311,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `username`, `email`, `email_verified_at`, `phone`, `role`, `password`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Nguyễn Văn An', 'admin', 'admin@gmail.com', '2024-12-12 09:57:21', '0999888999', 'admin', '$2y$10$XIKnWBIAhgesusdMdxmuUerBj1x25AEkw7Py6O7e7m8ryUIvI5Agi', 'activate', NULL, '2024-12-12 09:57:21', '2024-12-12 04:29:55'),
-(2, 'Nguyễn Văn An', 'nguyenvana', 'nguyenvana@gmail.com', '2024-12-12 11:21:14', '0555666888', 'user', '$2y$10$fI0Xnty/ecSFrV3/nCYu7.kEqRa7cajzg6S9Aw0uB/aW09CNqsZgm', 'activate', NULL, '2024-12-12 11:21:14', '2024-12-12 04:24:42');
+(2, 'Nguyễn Văn An', 'nguyenvana', 'nguyenvana@gmail.com', '2024-12-12 11:21:14', '0555666888', 'user', '$2y$10$XIKnWBIAhgesusdMdxmuUerBj1x25AEkw7Py6O7e7m8ryUIvI5Agi', 'activate', NULL, '2024-12-12 11:21:14', '2024-12-12 04:24:42');
 
 --
 -- Indexes for dumped tables
@@ -388,19 +418,19 @@ ALTER TABLE `banners`
 -- AUTO_INCREMENT for table `books`
 --
 ALTER TABLE `books`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `comments`
@@ -412,7 +442,7 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT for table `detail_orders`
 --
 ALTER TABLE `detail_orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -430,7 +460,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
