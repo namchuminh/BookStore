@@ -92,11 +92,14 @@ use App\Http\Controllers\User\UserOrderController;
 use App\Http\Controllers\User\UserCheckoutController;
 use App\Http\Controllers\User\UserCategoryController;
 use App\Http\Controllers\User\UserCommentController;
+use App\Http\Controllers\User\UserContactController;
+
 
 Route::get('/', [UserHomeController::class, 'index'])->name('user.home.index');
 Route::get('/sach', [UserBookController::class, 'index'])->name('user.book.index');
 Route::get('/sach/{slug}', [UserBookController::class, 'show'])->name('user.book.show');
 
+Route::get('/the-loai', [UserCategoryController::class, 'index'])->name('user.category.index');
 Route::get('/the-loai/{slug}', [UserCategoryController::class, 'show'])->name('user.category.show');
 
 Route::get('/gio-hang', [UserCartController::class, 'index'])->name('user.cart.index');
@@ -129,19 +132,31 @@ Route::get('/don-hang/{id}', [UserOrderController::class, 'show'])->name('user.o
 Route::post('/binh-luan', [UserCommentController::class, 'create'])->name('user.comment.create');
 
 
+Route::get('/lien-he', [UserContactController::class, 'index'])->name('user.contact.index');
+
+
+
+
+
+
+
+
+
+
+
 
 
 Route::get('/api/province', function () {
-    $response = Http::get('https://vapi.vnappmob.com/api/province');
+    $response = Http::get('https://vapi.vnappmob.com/api/v2/province');
     return $response->json();
 });
 
 Route::get('/api/district/{provinceId}', function ($provinceId) {
-    $response = Http::get("https://vapi.vnappmob.com/api/province/district/{$provinceId}");
+    $response = Http::get("https://vapi.vnappmob.com/api/v2/province/district/{$provinceId}");
     return $response->json();
 });
 
 Route::get('/api/ward/{districtId}', function ($districtId) {
-    $response = Http::get("https://vapi.vnappmob.com/api/province/ward/{$districtId}");
+    $response = Http::get("https://vapi.vnappmob.com/api/v2/province/ward/{$districtId}");
     return $response->json();
 });

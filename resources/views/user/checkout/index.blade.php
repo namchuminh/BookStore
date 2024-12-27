@@ -88,7 +88,7 @@
                             <div class="shopping-items">
                                 <div class="form-check d-flex align-items-center from-customradio">
                                     <label class="form-check-label">
-                                        Miễn Phí
+                                        30,000 VNĐ
                                     </label>
                                 </div>
                             </div>

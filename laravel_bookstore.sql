@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 13, 2024 at 06:50 PM
+-- Generation Time: Dec 13, 2024 at 10:01 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -42,7 +42,9 @@ CREATE TABLE `banners` (
 --
 
 INSERT INTO `banners` (`id`, `image`, `book_id`, `category_id`, `position`, `created_at`, `updated_at`) VALUES
-(1, 'banners/zhuQlNONg264SpTl6NEl9p05WpF7qUPiugsr0XHy.jpg', 1, NULL, 'slide', '2024-12-12 04:52:28', '2024-12-12 04:59:51');
+(1, 'banners/qbT4tVPDgXbhjrwmQYXFRCCaZ65BFPNExVlzhB8i.png', 3, NULL, 'slide', '2024-12-12 04:52:28', '2024-12-13 11:55:41'),
+(2, 'banners/DTg4HCWw48fpqIpq1BxZGSvGVn6gWZLsWZmMKg9T.png', NULL, NULL, 'banner', '2024-12-13 11:55:07', '2024-12-13 12:08:16'),
+(3, 'banners/jYONBcVmOV0jSvz0cwpuGfIevZeiPBUxvDy6o3jK.png', 1, NULL, 'banner', '2024-12-13 12:19:58', '2024-12-13 12:19:58');
 
 -- --------------------------------------------------------
 
@@ -80,7 +82,7 @@ CREATE TABLE `books` (
 --
 
 INSERT INTO `books` (`id`, `name`, `avatar`, `image`, `price`, `origin_price`, `quantity`, `sku`, `tags`, `total_page`, `published_year`, `category_id`, `format`, `language`, `century`, `slug`, `star`, `author`, `summary`, `description`, `created_at`, `updated_at`) VALUES
-(1, 'Sách Mới', 'books/avatars/NVeeruDKSAaWbDF7YNfBosEWGgS6ylds0Ngozbsz.jpg', 'http://127.0.0.1:8000/images/books/1734000872_675ac0e89d58a.jpg#http://127.0.0.1:8000/images/books/1734000872_675ac0e89e394.jpg#http://127.0.0.1:8000/images/books/1734000872_675ac0e89ea32.jpg', 150000, 500000, 50, 'HTOKM', 'Hải Sản, Pizza.', '300', '2020', 1, 'Bìa Cứng', 'Việt Nam', 'Thế kỷ 20', 'sach-moi', 0, 'Chưa Có Tác Giả', '', '', '2024-12-12 03:47:32', '2024-12-12 03:54:32'),
+(1, 'Sách Mới Tinh', 'books/avatars/NVeeruDKSAaWbDF7YNfBosEWGgS6ylds0Ngozbsz.jpg', 'http://127.0.0.1:8000/images/books/1734000872_675ac0e89d58a.jpg#http://127.0.0.1:8000/images/books/1734000872_675ac0e89e394.jpg#http://127.0.0.1:8000/images/books/1734000872_675ac0e89ea32.jpg', 150000, 500000, 50, 'HTOKM', 'Hải Sản, Pizza.', '300', '2020', 1, 'Bìa Cứng', 'Việt Nam', 'Thế kỷ 20', 'sach-moi-tinh', 0, 'Chưa Có Tác Giả', '', '', '2024-12-12 03:47:32', '2024-12-12 03:54:32'),
 (3, 'Sách mới 234', 'books/avatars/QH1XnpD71avNksj6aiOt1nuybS7MgskzqUCQFh18.jpg', 'http://127.0.0.1:8000/images/books/1734001072_675ac1b018cdd.jpg#http://127.0.0.1:8000/images/books/1734001072_675ac1b01978c.jpg#http://127.0.0.1:8000/images/books/1734001072_675ac1b019ed7.jpg', 20000, 500000, 20, 'HHHNAM2', 'pizza, bánh pizza giao diện, pizza mới', '5000', '2023', 1, 'Bìa Cứng', 'Việt Nam', 'Thế kỷ 20', 'sach-moi111', 0, 'Chưa Có Tác Giả', '', '', '2024-12-12 03:57:52', '2024-12-13 02:33:00'),
 (5, 'Sách mới 2', 'books/avatars/NVeeruDKSAaWbDF7YNfBosEWGgS6ylds0Ngozbsz.jpg', 'http://127.0.0.1:8000/images/books/1734000872_675ac0e89d58a.jpg#http://127.0.0.1:8000/images/books/1734000872_675ac0e89e394.jpg#http://127.0.0.1:8000/images/books/1734000872_675ac0e89ea32.jpg', 150000, 500000, 5, 'ANVFER', 'book, sách', '300', '2020', 1, 'Sách', 'Việt Nam', 'Thế kỷ 21', 'sach-moi', 0, 'Chưa Có Tác Giả', '', '', '2024-12-13 09:04:34', '2024-12-13 09:04:34'),
 (6, 'Sách mới 3', 'books/avatars/NVeeruDKSAaWbDF7YNfBosEWGgS6ylds0Ngozbsz.jpg', 'http://127.0.0.1:8000/images/books/1734000872_675ac0e89d58a.jpg#http://127.0.0.1:8000/images/books/1734000872_675ac0e89e394.jpg#http://127.0.0.1:8000/images/books/1734000872_675ac0e89ea32.jpg', 150000, 500000, 5, 'ANVFER', 'book, sách', '300', '2020', 1, 'Sách', 'Việt Nam', 'Thế kỷ 21', 'sach-moi', 0, 'Chưa Có Tác Giả', '', '', '2024-12-13 09:04:34', '2024-12-13 09:04:34'),
@@ -112,7 +114,7 @@ CREATE TABLE `carts` (
 --
 
 INSERT INTO `carts` (`id`, `book_id`, `user_id`, `quantity`, `created_at`, `updated_at`) VALUES
-(6, 1, 2, 1, '2024-12-13 10:34:02', '2024-12-13 10:34:02');
+(7, 13, 1, 1, '2024-12-13 11:14:10', '2024-12-13 11:14:10');
 
 -- --------------------------------------------------------
 
@@ -158,7 +160,13 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`id`, `content`, `star`, `book_id`, `user_id`, `created_at`, `updated_at`) VALUES
-(6, 'Hay lắm', 4, 1, 2, '2024-12-12 12:13:28', '2024-12-12 12:13:28');
+(6, 'Hay lắm', 4, 1, 2, '2024-12-12 12:13:28', '2024-12-12 12:13:28'),
+(7, 'Hay lắm nhé', 4, 1, 2, '2024-12-13 13:50:54', '2024-12-13 13:50:54'),
+(8, 'Không hay', 1, 1, 2, '2024-12-13 13:51:07', '2024-12-13 13:51:07'),
+(9, 'Tuyệt', 5, 1, 2, '2024-12-13 13:51:42', '2024-12-13 13:51:42'),
+(10, 'ok', 1, 1, 2, '2024-12-13 13:58:36', '2024-12-13 13:58:36'),
+(11, 'a', 5, 1, 2, '2024-12-13 14:00:09', '2024-12-13 14:00:09'),
+(12, 'aaa', 5, 5, 2, '2024-12-13 14:00:23', '2024-12-13 14:00:23');
 
 -- --------------------------------------------------------
 
@@ -180,7 +188,9 @@ CREATE TABLE `detail_orders` (
 --
 
 INSERT INTO `detail_orders` (`id`, `book_id`, `order_id`, `quantity`, `created_at`, `updated_at`) VALUES
-(1, 1, 2, 1, '2024-12-13 10:28:40', '2024-12-13 10:28:40');
+(1, 1, 2, 1, '2024-12-13 10:28:40', '2024-12-13 10:28:40'),
+(2, 3, 3, 1, '2024-12-13 11:18:19', '2024-12-13 11:18:19'),
+(3, 3, 4, 1, '2024-12-13 13:15:28', '2024-12-13 13:15:28');
 
 -- --------------------------------------------------------
 
@@ -251,7 +261,9 @@ CREATE TABLE `orders` (
 
 INSERT INTO `orders` (`id`, `code`, `user_id`, `amount`, `payment`, `address`, `status`, `created_at`, `updated_at`) VALUES
 (1, 'KJFGNIJKDFN', 2, 150000, 'cod', 'Hà Nội', 'pending', '2024-12-12 12:44:42', '2024-12-12 06:10:18'),
-(2, 'ORD-675C6EC826605', 2, 150000, 'cod', 'Tầng 1, Tòa ABC, Đường XYZ, Quận JQK, Phường Trần Phú, Thành phố Qui Nhơn, Tỉnh Bình Định', 'pending', '2024-12-13 10:28:40', '2024-12-13 10:35:17');
+(2, 'ORD-675C6EC826605', 2, 150000, 'cod', 'Tầng 1, Tòa ABC, Đường XYZ, Quận JQK, Phường Trần Phú, Thành phố Qui Nhơn, Tỉnh Bình Định', 'pending', '2024-12-13 10:28:40', '2024-12-13 10:35:17'),
+(3, 'ORD-675C7A6B6A69F', 2, 20000, 'cod', 'Tầng 1, Tòa ABC, Phường Mỹ Đình 1, Quận Nam Từ Liêm, Thành phố Hà Nội', 'pending', '2024-12-13 11:18:19', '2024-12-13 11:18:19'),
+(4, 'ORD-675C95E0D2778', 2, 20000, 'cod', 'Tầng 1, Tòa ABC, Xã Hiếu Liêm, Huyện Bắc Tân Uyên, Tỉnh Bình Dương', 'pending', '2024-12-13 13:15:28', '2024-12-13 13:15:28');
 
 -- --------------------------------------------------------
 
@@ -412,7 +424,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `banners`
 --
 ALTER TABLE `banners`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `books`
@@ -424,7 +436,7 @@ ALTER TABLE `books`
 -- AUTO_INCREMENT for table `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -436,13 +448,13 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `detail_orders`
 --
 ALTER TABLE `detail_orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -460,7 +472,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`

@@ -190,17 +190,17 @@
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="{{ route('user.home.index') }}">
+                                                    <a href="{{ route('user.book.index') }}">
                                                         Sản Phẩm
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="{{ route('user.home.index') }}">
+                                                    <a href="{{ route('user.category.index') }}">
                                                         Thể Loại
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="{{ route('user.home.index') }}">
+                                                    <a href="{{ route('user.contact.index') }}">
                                                         Liên Hệ
                                                     </a>
                                                 </li>
@@ -275,17 +275,17 @@
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="{{ route('user.home.index') }}">
+                                                    <a href="{{ route('user.book.index') }}">
                                                         Sản Phẩm
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="{{ route('user.home.index') }}">
+                                                    <a href="{{ route('user.category.index') }}">
                                                         Thể Loại
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="{{ route('user.home.index') }}">
+                                                    <a href="{{ route('user.contact.index') }}">
                                                         Liên Hệ
                                                     </a>
                                                 </li>
@@ -339,7 +339,7 @@
 
     <!-- Login Modal -->
     <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog" style="max-width: fit-content;">
             <div class="modal-content">
                 <div class="modal-body">
                     <div class="close-btn">
@@ -373,7 +373,7 @@
     
     <!-- Registration Modal -->
     <div class="modal fade" id="registrationModal" tabindex="-1" aria-labelledby="registrationModalLabel"
-        aria-hidden="true">
+    aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body">
@@ -382,42 +382,46 @@
                     </div>
                     <div class="identityBox" style="display: block; place-items: normal;">
                         <div class="form-wrapper">
-                            <h1 id="registrationModalLabel">Create account!</h1>
-                            <input class="inputField" type="text" name="name" id="name" placeholder="User Name">
-                            <input class="inputField" type="email" name="email" placeholder="Email Address">
-                            <input class="inputField" type="password" name="password" placeholder="Enter Password">
-                            <input class="inputField" type="password" name="password"
-                                placeholder="Enter Confirm Password">
+                            <h1 id="registrationModalLabel">Tạo tài khoản!</h1>
+                            <div class="my-3 text-center">
+                                <p class="error-register"></p>
+                            </div>
+                            <input class="inputField" type="text" name="name" id="name" placeholder="Họ tên" required>
+
+                            <!-- Tên người dùng -->
+                            <input class="inputField" type="text" name="username" id="username" placeholder="Tên người dùng" required>
+                            
+                            <!-- Email -->
+                            <input class="inputField" type="email" name="email" id="email" placeholder="Địa chỉ Email" required>
+                            
+                            <!-- Số điện thoại -->
+                            <input class="inputField" type="text" name="phone" id="phone" placeholder="Số điện thoại" required>
+                            
+                            <!-- Mật khẩu -->
+                            <input class="inputField" type="password" name="password" id="password" placeholder="Nhập mật khẩu" required>
+                            
+                            <!-- Xác nhận mật khẩu -->
+                            <input class="inputField" type="password" name="password_confirmation" id="password_confirmation" placeholder="Xác nhận mật khẩu" required>
+
                             <div class="input-check remember-me">
                                 <div class="checkbox-wrapper">
-                                    <input type="checkbox" class="form-check-input" name="save-for-next"
-                                        id="rememberMe">
-                                    <label for="rememberMe">Nhớ Mật Khẩu</label>
+                                    <input type="checkbox" class="form-check-input" name="save-for-next" id="rememberMe">
+                                    <label for="rememberMe">Nhớ mật khẩu</label>
                                 </div>
-                                <div class="text"> <a href="index-2.html">Forgot Your password?</a> </div>
+                                <div class="text">
+                                    <a href="#">Quên mật khẩu?</a>
+                                </div>
                             </div>
-                            <div class="loginBtn">
-                                <a href="index-2.html" class="theme-btn rounded-0"> Log in </a>
+                            <div class="loginBtn" id="registerBtn">
+                                <a href="#" class="theme-btn rounded-0">Đăng ký</a>
                             </div>
                             <div class="orting-badge">
-                                Or
-                            </div>
-                            <div>
-                                <a class="another-option" href="https://www.google.com/">
-                                    <img src="assets/img/google.png" alt="google">
-                                    Continue With Google
-                                </a>
-                            </div>
-                            <div>
-                                <a class="another-option another-option-two" href="https://www.facebook.com/">
-                                    <img src="assets/img/facebook.png" alt="google">
-                                    Continue With Facebook
-                                </a>
+                                Điều khoản
                             </div>
                             <div class="form-check-3 d-flex align-items-center from-customradio-2 mt-3">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault">
-                                <label class="form-check-label">
-                                    I Accept Your Terms & Conditions
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="termsAndConditions" required>
+                                <label class="form-check-label" for="termsAndConditions">
+                                    Tôi đồng ý với Điều khoản và Chính sách bảo mật
                                 </label>
                             </div>
                         </div>
@@ -426,7 +430,6 @@
             </div>
         </div>
     </div>
-
 
     @yield('content')
 
@@ -652,6 +655,17 @@
     .cart-icon::before {
         content: "{{ $cartCount }}";
     }
+
+    input:focus-within{
+        color: black;
+    }
+    input{
+        color: black;
+    }
+
+    input:focus-visible{
+        color: black;
+    }
 </style>
 <script>
     $(document).ready(function () {
@@ -688,6 +702,72 @@
                 error: function (xhr) {
                     // Xử lý lỗi khi gửi request
                     $('.error').text('Đã xảy ra lỗi. Vui lòng thử lại sau.');
+                }
+            });
+        });
+
+        $('#registerBtn').on('click', function (e) {
+            e.preventDefault(); // Ngăn form reload
+
+            // Lấy giá trị từ input
+            let name = $('#name').val();
+            let username = $('#username').val();
+            let email = $('#email').val();
+            let phone = $('#phone').val();
+            let password = $('#password').val();
+            let password_confirmation = $('#password_confirmation').val();
+            let termsAccepted = $('#termsAndConditions').is(':checked');
+
+            // Kiểm tra input rỗng
+            if (!username || !email || !phone || !password || !password_confirmation) {
+                $('.error-register').text('Vui lòng nhập đầy đủ thông tin.');
+                return;
+            }
+
+            // Kiểm tra mật khẩu và xác nhận mật khẩu có khớp
+            if (password !== password_confirmation) {
+                $('.error-register').text('Mật khẩu và xác nhận mật khẩu không khớp.');
+                return;
+            }
+
+            // Kiểm tra điều khoản và chính sách bảo mật
+            if (!termsAccepted) {
+                $('.error-register').text('Vui lòng đồng ý với Điều khoản và Chính sách bảo mật.');
+                return;
+            }
+
+            // Gửi dữ liệu bằng Ajax
+            $.ajax({
+                url: '{{ route('user.register.submit') }}', // Route gửi dữ liệu
+                type: 'POST',
+                data: {
+                    name: name,
+                    username: username,
+                    email: email,
+                    phone: phone,
+                    password: password,
+                    password_confirmation: password_confirmation,
+                    _token: '{{ csrf_token() }}' // Bảo mật CSRF
+                },
+                success: function (response) {
+                    if (response.error) {
+                        $('.error-register').text(response.error); // Hiển thị lỗi
+                    } else {
+                        // Nếu đăng ký thành công, chuyển hướng đến trang đăng nhập hoặc trang khác
+                        location.reload();
+                    }
+                },
+                error: function (xhr) {
+                    // Xử lý lỗi khi gửi request
+                    let errors = xhr.responseJSON.errors;
+                    let errorMessages = '';
+                    // Lặp qua các lỗi và thêm chúng vào chuỗi lỗi
+                    for (let field in errors) {
+                        errorMessages += errors[field].join(', ') + '<br>';
+                    }
+
+                    // Gắn chuỗi lỗi vào .error-register
+                    $('.error-register').html(errorMessages);
                 }
             });
         });

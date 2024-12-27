@@ -44,4 +44,9 @@ class Book extends Model
     {
         return $this->hasMany(Cart::class);
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'book_id'); // Mối quan hệ một-nhiều với Comment
+    }
 }
