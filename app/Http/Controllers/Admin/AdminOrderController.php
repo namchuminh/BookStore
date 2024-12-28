@@ -31,8 +31,8 @@ class AdminOrderController extends Controller
     public function show($id)
     {
         $order = Order::with(['user', 'detailOrders.book'])->findOrFail($id);
-
-        return view('Admin.order.show', compact('order'));
+        $products = DetailOrder::with('order')->with('book')->where('order_id', $id)->get();
+        return view('Admin.order.show', compact('order', 'products'));
     }
 
     // Cập nhật trạng thái đơn hàng
@@ -47,5 +47,14 @@ class AdminOrderController extends Controller
         $order->update(['status' => $validated['status']]);
 
         return redirect()->route('admin.order.index')->with('success', 'Trạng thái đơn hàng đã được cập nhật.');
+    }
+
+    public function payment($id)
+    {
+        $order = Order::findOrFail($id);
+
+        $order->update(['payment' => "bank"]);
+
+        return redirect()->route('admin.order.show', $id)->with('success', 'Cập nhật trạng thái thanh toán thành công!');
     }
 }

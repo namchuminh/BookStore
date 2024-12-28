@@ -30,6 +30,8 @@ Route::prefix('admin')->group(function () {
     Route::get('logout', [AdminLogoutController::class, 'index'])->name('admin.logout')->middleware('admin');
     Route::middleware('admin')->group(function () {
         Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+        Route::get('/sumRevenue', [AdminDashboardController::class, 'sumRevenue'])->name('admin.sumRevenue');
+        Route::get('/sumOrder', [AdminDashboardController::class, 'sumOrder'])->name('admin.sumOrder');
 
         Route::resource('/category', AdminCategoryController::class)->names([
             'index' => 'admin.category.index',
@@ -71,6 +73,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/order', [AdminOrderController::class, 'index'])->name('admin.order.index')->middleware('admin');
         Route::get('/order/{code}', [AdminOrderController::class, 'show'])->name('admin.order.show')->middleware('admin');
         Route::put('/order/{id}', [AdminOrderController::class, 'status'])->name('admin.order.status')->middleware('admin');
+        Route::get('/order/payment/{id}', [AdminOrderController::class, 'payment'])->name('admin.order.payment')->middleware('admin');
 
 
         Route::get('/profile', [AdminProfileController::class, 'edit'])->name('admin.profile.edit')->middleware('admin');

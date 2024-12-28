@@ -103,8 +103,8 @@
                         </div>
                         <div class="checkout-item-2">
                             <div class="form-check-2 d-flex align-items-center from-customradio-2">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                    id="flexRadioDefault1222" checked>
+                                <input class="form-check-input" type="radio" name="payment"
+                                    id="flexRadioDefault1222" value="cod" checked>
                                 <label class="form-check-label" for="flexRadioDefault1222">
                                     Tiền Mặt
                                 </label>
@@ -113,8 +113,8 @@
                                 Bạn sẽ thanh toán khi chúng tôi gửi sản phẩm đến địa chỉ thanh toán của bạn.
                             </p>
                             <div class="form-check-3 d-flex align-items-center from-customradio-2 mt-3">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                    id="flexRadioDefault12224">
+                                <input class="form-check-input" type="radio" name="payment"
+                                    id="flexRadioDefault12224" value="bank">
                                 <label class="form-check-label" for="flexRadioDefault12224">
                                     Chuyển Khoản
                                 </label>
