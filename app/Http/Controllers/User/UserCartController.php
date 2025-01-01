@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Cart;
 use App\Models\Book;
@@ -121,5 +122,49 @@ class UserCartController extends Controller
             // Nếu không tìm thấy sản phẩm trong giỏ hàng của người dùng
             return redirect()->route('user.cart.index')->with('error', 'Sản phẩm không tồn tại trong giỏ hàng.');
         }
+    }
+
+    public function pont(Request $request){
+        if(!auth()->user()){
+            return redirect()->back()->with('error', 'Vui lòng đăng nhập để sử dụng điểm.');
+        }
+
+        // Nếu đã tồn tại sesison point thì xóa
+        if($request->session()->has('pont')){
+            //Cộng lại điểm cho user bằng session pont
+            $user = User::findOrFail(auth()->user()->id);
+            $user->update(['pont' => $user->pont + $request->session()->get('pont')]);
+            $request->session()->forget('pont');
+        }
+
+        if($request->input('pont') <= 0){
+            return redirect()->back()->with('error', 'Số điểm không hợp lệ.');
+        }
+
+        if(!is_numeric($request->input('pont'))){
+            return redirect()->back()->with('error', 'Số điểm không hợp lệ.');
+        }
+
+        $user = User::findOrFail(auth()->user()->id);
+
+        if($user->pont <= 0){
+            return redirect()->back()->with('error', 'Số điểm của bạn không đủ để sử dụng.');
+        }
+        
+        if($request->input('pont') > $user->pont){
+            return redirect()->back()->with('error', 'Số điểm của bạn không đủ để sử dụng.');
+        }
+
+        if($request->input('pont') > 30000){
+            return redirect()->back()->with('error', 'Số điểm sử dụng tối đa là 30000');
+        }
+
+        //tạo sessiong điểm
+        $request->session()->put('pont', $request->input('pont'));
+
+        // Trừ số điểm của user đi
+        $user->update(['pont' => $user->pont - $request->input('pont')]);
+
+        return redirect()->back()->with('success', 'Sử dụng điểm thành công.');
     }
 }

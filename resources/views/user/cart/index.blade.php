@@ -90,7 +90,7 @@
                                         <span class="d-flex gap-5 align-items-center  justify-content-between">
                                             <span class="sub-title">Vận Chuyển:</span>
                                             <span class="sub-text">
-                                                0 VNĐ
+                                                + 30,000 VNĐ
                                             </span>
                                         </span>
                                     </td>
@@ -100,16 +100,33 @@
                                         <span class="d-flex gap-5 align-items-center  justify-content-between">
                                             <span class="sub-title">Giảm Giá:</span>
                                             <span class="sub-text">
-                                                0 VNĐ
+                                                - {{ number_format(session('pont', 0)) }} VNĐ
                                             </span>
                                         </span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
+                                        <form action="{{ route('user.cart.pont') }}" method="POST">
+                                            @csrf
+                                            <span class="d-flex gap-5 align-items-center  justify-content-between">
+                                                <input type="number" class="form-control" name="pont" placeholder="Số lượng điểm">
+                                                <button class="btn btn-primary" type="submit">Dùng</button>
+                                            </span>
+                                            <span class="mt-2">
+                                                <p class="mt-2 text-muted" style="font-size: 14px;">Bạn hiện có 
+                                                    <!-- Lấy ra session pont -->
+                                                    <b>{{ number_format(auth()->user()->pont) }} điểm</b> 
+                                                để sử dụng.</p>
+                                            </span>
+                                        </form>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
                                         <span class="d-flex gap-5 align-items-center  justify-content-between">
                                             <span class="sub-title">Tổng Tiền: </span>
-                                            <span class="sub-price sub-price-total">{{ number_format($total) }} VNĐ</span>
+                                            <span class="sub-price sub-price-total">{{ number_format($total + 30000 - session('pont', 0)) }} VNĐ</span>
                                         </span>
                                     </td>
                                 </tr>

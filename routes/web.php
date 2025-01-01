@@ -109,6 +109,8 @@ Route::get('/gio-hang', [UserCartController::class, 'index'])->name('user.cart.i
 Route::post('/gio-hang', [UserCartController::class, 'add'])->name('user.cart.add');
 Route::put('/gio-hang/{id}', [UserCartController::class, 'update'])->name('user.cart.update');
 Route::get('/gio-hang/xoa/{id}', [UserCartController::class, 'destroy'])->name('user.cart.delete');
+Route::post('/gio-hang/diem', [UserCartController::class, 'pont'])->name('user.cart.pont');
+
 
 Route::get('/dat-hang', [UserOrderController::class, 'index'])->name('user.order.index');
 

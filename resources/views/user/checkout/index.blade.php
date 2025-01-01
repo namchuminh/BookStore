@@ -80,7 +80,7 @@
                         @foreach ($carts as $cart)
                             <div class="checkout-item d-flex align-items-center justify-content-between">
                                 <p>{{ $cart->book->name }} x {{ $cart->quantity }}</p>
-                                <p>{{ number_format($cart->quantity * $cart->book->price) }} VNĐ</p>
+                                <p>+ {{ number_format($cart->quantity * $cart->book->price) }} VNĐ</p>
                             </div>
                         @endforeach
                         <div class="checkout-item d-flex justify-content-between">
@@ -88,18 +88,18 @@
                             <div class="shopping-items">
                                 <div class="form-check d-flex align-items-center from-customradio">
                                     <label class="form-check-label">
-                                        30,000 VNĐ
+                                        + 30,000 VNĐ
                                     </label>
                                 </div>
                             </div>
                         </div>
                         <div class="checkout-item d-flex align-items-center justify-content-between">
                             <p>Giảm Giá</p>
-                            <p>0 VNĐ</p>
+                            <p>- {{ number_format(session('pont', 0)) }} VNĐ</p>
                         </div>
                         <div class="checkout-item d-flex align-items-center justify-content-between">
                             <p>Tổng Tiền</p>
-                            <p>{{ number_format($total) }} VNĐ</p>
+                            <p>{{ number_format($total + 30000 - session('pont', 0)) }} VNĐ</p>
                         </div>
                         <div class="checkout-item-2">
                             <div class="form-check-2 d-flex align-items-center from-customradio-2">
