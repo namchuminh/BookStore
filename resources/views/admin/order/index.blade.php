@@ -51,7 +51,7 @@
                                         <td>{{ $key + 1 }}</td>
                                         <td>{{ $order->code }}</td>
                                         <td>{{ $order->user->name ?? 'N/A' }}</td>
-                                        <td>{{ number_format($order->amount, 0, ',', '.') }} đ</td>
+                                        <td>{{ number_format($order->amount + 30000 - $order->sale, 0, ',', '.') }} đ</td>
                                         <td>{{ $order->payment == "cod" ? "Tiền Mặt" : "Chuyển Khoản" }}</td>
                                         <td>
                                             @if ($order->status == "pending")

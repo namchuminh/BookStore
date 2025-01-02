@@ -20,6 +20,14 @@ class UserCheckoutController extends Controller
 
         if($request->query('resultCode') == "0"){
             $carts = Cart::where('user_id', Auth::id())->get();
+
+            $sale = 0;
+
+            if($request->session()->has('pont')){
+                $sale = $request->session()->get('pont');
+                $request->session()->forget('pont');
+            }
+
             // Tạo một hóa đơn mới
             $order = Order::create([
                 'code' => 'ORD-' . strtoupper(uniqid()), // Mã hóa đơn (ví dụ: ORD-ABC123)
@@ -27,10 +35,19 @@ class UserCheckoutController extends Controller
                 'amount' => $carts->sum(function ($cart) {
                     return $cart->book->price * $cart->quantity; // Tổng tiền hóa đơn
                 }),
+                'sale' => $sale,
                 'payment' => 'bank', // Ví dụ thanh toán cod
                 'address' => $request->query('address'),
                 'status' => 'pending', // Trạng thái đơn hàng (ví dụ: đang chờ xử lý)
             ]);
+
+            $pontIncrease = $order->amount / 100;
+
+            $user = Auth::user();
+
+            $user->pont += $pontIncrease;
+
+            $user->save();
 
             // Lặp qua từng sản phẩm trong giỏ hàng để tạo chi tiết đơn hàng
             foreach ($carts as $cart) {
@@ -181,6 +198,13 @@ class UserCheckoutController extends Controller
             die();
         }
 
+        $sale = 0;
+
+        if($request->session()->has('pont')){
+            $sale = $request->session()->get('pont');
+            $request->session()->forget('pont');
+        }
+
         // Tạo một hóa đơn mới
         $order = Order::create([
             'code' => 'ORD-' . strtoupper(uniqid()), // Mã hóa đơn (ví dụ: ORD-ABC123)
@@ -189,9 +213,18 @@ class UserCheckoutController extends Controller
                 return $cart->book->price * $cart->quantity; // Tổng tiền hóa đơn
             }),
             'payment' => 'cod', // Ví dụ thanh toán cod
+            'sale' => $sale,
             'address' => $address,
             'status' => 'pending', // Trạng thái đơn hàng (ví dụ: đang chờ xử lý)
         ]);
+
+        $pontIncrease = $order->amount / 100;
+
+        $user = Auth::user();
+
+        $user->pont += $pontIncrease;
+
+        $user->save();
 
         // Lặp qua từng sản phẩm trong giỏ hàng để tạo chi tiết đơn hàng
         foreach ($carts as $cart) {

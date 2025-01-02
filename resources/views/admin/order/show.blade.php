@@ -89,13 +89,20 @@
                             <span class="d-flex m-1">
                                 <b>Phí Giao Hàng: </b>
                                 <p style="margin-left: 5px;">
-                                    {{ number_format(0) }}
+                                    + {{ number_format(30000) }}
+                                    VND
+                                </p>
+                            </span>
+                            <span class="d-flex m-1">
+                                <b>Giảm Giá: </b>
+                                <p style="margin-left: 5px;">
+                                    - {{ number_format($order->sale) }}
                                     VND
                                 </p>
                             </span>
                             <span class="d-flex m-1">
                                 <b>Tổng Tiền: </b>
-                                <p style="margin-left: 5px;">{{ number_format($order->amount) }} VNĐ</p>
+                                <p style="margin-left: 5px;">{{ number_format($order->amount + 30000 - $order->sale) }} VNĐ</p>
                             </span>
                         </div>
                     </div>

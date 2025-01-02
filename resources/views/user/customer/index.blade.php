@@ -55,7 +55,7 @@
                             <tr>
                                 <td class="text-center">{{ $orders->firstItem() + $index }}</td>
                                 <td>{{ $order->code }}</td>
-                                <td>{{ number_format($order->amount, 0, ',', '.') }} VNĐ</td>
+                                <td>{{ number_format($order->amount + 30000 - $order->sale, 0, ',', '.') }} VNĐ</td>
                                 <td class="text-center">
                                     @switch($order->payment)
                                         @case('cod')

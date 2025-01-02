@@ -66,7 +66,17 @@
                                         <span class="d-flex gap-5 align-items-center  justify-content-between">
                                             <span class="sub-title">Vận Chuyển:</span>
                                             <span class="sub-text">
-                                                0 VNĐ
+                                                + 30,000 VNĐ
+                                            </span>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="d-flex gap-5 align-items-center  justify-content-between">
+                                            <span class="sub-title">Giảm Giá:</span>
+                                            <span class="sub-text">
+                                                - {{ number_format($order->sale) }} VNĐ
                                             </span>
                                         </span>
                                     </td>

@@ -5,7 +5,13 @@
     <div class="container">
         <div class="main-cart-wrapper">
             <div class="row g-5">
-                <div class="col-xl-9">
+                <div 
+                    @if (isset($total) && $total > 1)
+                        class="col-xl-9"
+                    @else
+                        class="col-xl-12"
+                    @endif
+                    >
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
@@ -68,6 +74,7 @@
                         @endif
                     </div>
                 </div>
+                @if (isset($total) && $total > 1)
                 <div class="col-xl-3">
                     <div class="table-responsive cart-total">
                         <table class="table">
@@ -118,6 +125,11 @@
                                                     <!-- Lấy ra session pont -->
                                                     <b>{{ number_format(auth()->user()->pont) }} điểm</b> 
                                                 để sử dụng.</p>
+                                                @if (isset($total) && $total > 1)
+                                                    <p class="mt-2 text-muted" style="font-size: 14px;">Đặt hàng để nhận
+                                                        <b>+ {{ number_format($total / 100) }} điểm</b> sử dụng. 
+                                                    </p>
+                                            @endif
                                             </span>
                                         </form>
                                     </td>
@@ -137,6 +149,7 @@
                         @endif
                     </div>
                 </div>
+                @endif
             </div>
         </div>
     </div>
