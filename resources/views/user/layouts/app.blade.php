@@ -51,7 +51,7 @@
                     <div class="offcanvas__top mb-5 d-flex justify-content-between align-items-center">
                         <div class="offcanvas__logo">
                             <a href="index.html">
-                                <img src="{{ asset('assets/img/logo/black-logo.svg') }}" alt="logo-img">
+                                <img src="{{ asset('assets/img/logo/white-logo.svg') }}" alt="logo-img">
                             </a>
                         </div>
                         <div class="offcanvas__close">
@@ -101,11 +101,6 @@
                                 </div>
                             </li>
                         </ul>
-                        <div class="header-button mt-4">
-                            <a href="contact.html" class="theme-btn text-center">
-                                Get A Quote <i class="fa-solid fa-arrow-right-long"></i>
-                            </a>
-                        </div>
                         <div class="social-icon d-flex align-items-center">
                             <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
                             <a href="https://x.com/"><i class="fab fa-twitter"></i></a>

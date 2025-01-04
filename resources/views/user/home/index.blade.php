@@ -168,7 +168,7 @@
         <div class="book-catagories-wrapper">
             <div class="section-title text-center">
                 <h2 class="wow fadeInUp" data-wow-delay=".3s"
-                    style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">Top Thể Loại
+                    style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">Chọn Thể Loại
                 </h2>
             </div>
             <div class="array-button">
