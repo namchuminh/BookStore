@@ -57,7 +57,7 @@
                                     <td>
                                         <span class="d-flex gap-5 align-items-center justify-content-between">
                                             <span class="sub-title">Tạm Tính:</span>
-                                            <span class="sub-price">{{ number_format($product->book->price * $product->quantity) }} VNĐ</span>
+                                            <span class="sub-price">{{ number_format($order->amount) }} VNĐ</span>
                                         </span>
                                     </td>
                                 </tr>
@@ -95,7 +95,7 @@
                                     <td>
                                         <span class="d-flex gap-5 align-items-center  justify-content-between">
                                             <span class="sub-title">Tổng Tiền: </span>
-                                            <span class="sub-price sub-price-total">{{ number_format($product->book->price * $product->quantity) }} VNĐ</span>
+                                            <span class="sub-price sub-price-total">{{ number_format($order->amount + 30000 + $order->sale) }} VNĐ</span>
                                         </span>
                                     </td>
                                 </tr>

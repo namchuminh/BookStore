@@ -38,6 +38,9 @@
                                             <option value="">Chọn Tỉnh/Thành phố</option>
                                         </select>
                                         <input type="hidden" id="province_text" name="province_text">
+                                        @error('province_text')
+                                            <p class="text-danger mt-2">{{ $message }}</p>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
@@ -47,6 +50,9 @@
                                             <option value="">Chọn Quận/Huyện</option>
                                         </select>
                                         <input type="hidden" id="district_text" name="district_text">
+                                        @error('district_text')
+                                            <p class="text-danger mt-2">{{ $message }}</p>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
@@ -56,12 +62,18 @@
                                             <option value="">Chọn Xã/Phường</option>
                                         </select>
                                         <input type="hidden" id="ward_text" name="ward_text">
+                                        @error('ward_text')
+                                            <p class="text-danger mt-2">{{ $message }}</p>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="input-single">
                                         <span>Địa chỉ*</span>
                                         <input type="text" name="address" placeholder="Số nhà, đường, xóm, ngõ">
+                                        @error('address')
+                                            <p class="text-danger mt-2">{{ $message }}</p>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>

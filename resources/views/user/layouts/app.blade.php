@@ -61,19 +61,18 @@
                         </div>
                     </div>
                     <p class="text d-none d-xl-block">
-                        Nullam dignissim, ante scelerisque the is euismod fermentum odio sem semper the is erat, a
-                        feugiat leo urna eget eros. Duis Aenean a imperdiet risus.
+                    Trang web của chúng tôi là điểm đến lý tưởng dành cho những người yêu sách, nơi bạn có thể tìm thấy hàng ngàn tựa sách từ văn học kinh điển, sách giáo dục, sách kỹ năng sống, đến những cuốn tiểu thuyết hiện đại hấp dẫn.
                     </p>
                     <div class="mobile-menu fix mb-3"></div>
                     <div class="offcanvas__contact">
-                        <h4>Contact Info</h4>
+                        <h4>Thông Tin Liên Hệ</h4>
                         <ul>
                             <li class="d-flex align-items-center">
                                 <div class="offcanvas__contact-icon">
                                     <i class="fal fa-map-marker-alt"></i>
                                 </div>
                                 <div class="offcanvas__contact-text">
-                                    <a target="_blank" href="index.html">Main Street, Melbourne, Australia</a>
+                                    <a target="_blank" href="#">Main Street, Melbourne, Australia</a>
                                 </div>
                             </li>
                             <li class="d-flex align-items-center">
@@ -90,7 +89,7 @@
                                     <i class="fal fa-clock"></i>
                                 </div>
                                 <div class="offcanvas__contact-text">
-                                    <a target="_blank" href="index.html">Mod-friday, 09am -05pm</a>
+                                    <a target="_blank" href="#">Mod-friday, 09am -05pm</a>
                                 </div>
                             </li>
                             <li class="d-flex align-items-center">
@@ -442,7 +441,7 @@
                         <i class="icon-icon-5"></i>
                     </div>
                     <div class="content">
-                        <p>Call Us 7/24</p>
+                        <p>Liên Hệ 7/24</p>
                         <h3>
                             <a href="tel:+2085550112">+208-555-0112</a>
                         </h3>
@@ -498,8 +497,7 @@
                             </div>
                             <div class="footer-content">
                                 <p>
-                                    Phasellus ultricies aliquam volutpat ullamcorper laoreet neque, a lacinia curabitur
-                                    lacinia mollis
+                                    Trang bán sách trực tuyến đa dạng thể loại, giá hấp dẫn, giao hàng nhanh, hỗ trợ 24/7, cập nhật sách mới liên tục.
                                 </p>
                                 <div class="social-icon d-flex align-items-center">
                                     <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
@@ -513,7 +511,7 @@
                     <div class="col-xl-3 col-lg-4 col-md-6 ps-lg-5 wow fadeInUp" data-wow-delay=".4s">
                         <div class="single-footer-widget">
                             <div class="widget-head">
-                                <h3>Costumers Support</h3>
+                                <h3>Chính Sách</h3>
                             </div>
                             <ul class="list-area">
                                 <li>
@@ -546,7 +544,7 @@
                     <div class="col-xl-3 col-lg-4 col-md-6 ps-lg-5 wow fadeInUp" data-wow-delay=".6s">
                         <div class="single-footer-widget">
                             <div class="widget-head">
-                                <h3>Categories</h3>
+                                <h3>Thể Loại Sách</h3>
                             </div>
                             <ul class="list-area">
                                 <li>
@@ -579,7 +577,7 @@
                     <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".8s">
                         <div class="single-footer-widget">
                             <div class="widget-head">
-                                <h3>Newsletter</h3>
+                                <h3>Đăng Ký</h3>
                             </div>
                             <div class="footer-content">
                                 <p>Sign up to searing weekly newsletter to get the latest updates.</p>
@@ -599,30 +597,8 @@
             <div class="container">
                 <div class="footer-wrapper d-flex align-items-center justify-content-between">
                     <p class="wow fadeInLeft" data-wow-delay=".3s">
-                        © All Copyright 2024 by <a href="index.html">Bookle</a>
+                        © Tất cả nội dung thuộc 2024 bởi <a href="#">PhuongThu.Com</a>
                     </p>
-                    <ul class="brand-logo wow fadeInRight" data-wow-delay=".5s">
-                        <li>
-                            <a href="contact.html">
-                                <img src="assets/img/visa-logo.png" alt="img">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="contact.html">
-                                <img src="assets/img/mastercard.png" alt="img">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="contact.html">
-                                <img src="assets/img/payoneer.png" alt="img">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="contact.html">
-                                <img src="assets/img/affirm.png" alt="img">
-                            </a>
-                        </li>
-                    </ul>
                 </div>
             </div>
         </div>
